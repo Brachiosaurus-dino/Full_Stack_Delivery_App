@@ -1,5 +1,5 @@
 
-// fetch_data.js
+
 import mongoose from "mongoose";
 import { connect_mongo_db } from "./mongo.js";
 
@@ -9,12 +9,12 @@ const get_data= async () => {
     const database=mongoose.connection.db // This is used to diect access of collection of data without use of model
 
 
-    const collection = database.collection('comments')
+    const collection = database.collection('comments') // Here the databse give data from collection --> smaple_fix.comments ('comments') this is name of data
 
-    const data=await collection.find({}).toArray()
-
+    const data=await collection.find({}).toArray() // Here we wait and use find({}) to get all data witout filtering and then convert o array 
+ 
     console.log('Data From mongodb Collection : ')
-    data.forEach(doc => {
+    data.forEach(doc => {    // here we print on each data and show using conosole.log
         console.log({
             id:doc._id,
             name:doc.name,
@@ -25,37 +25,9 @@ const get_data= async () => {
         })
     })
 
-    // process.exit()
+    process.exit()  // This si basically to exit after showing all data
 };
 
 get_data()
 
 
-// fetchComments.js
-// import mongoose from 'mongoose';
-// import { connect_mongo_db } from './mongo.js';
-
-// const fetchComments = async () => {
-//   await connect_mongo_db();
-
-//   const db = mongoose.connection.db;
-//   const collection = db.collection('comments'); // your collection
-
-//   const comments = await collection.find({}).toArray();
-
-//   console.log("Comments from sample_mflix.comments:");
-//   comments.forEach(comment => {
-//     console.log({
-//       id: comment._id,
-//       name: comment.name,
-//       email: comment.email,
-//       movie_id: comment.movie_id,
-//       text: comment.text,
-//       date: comment.date
-//     });
-//   });
-
-//   process.exit();
-// };
-
-// fetchComments();
