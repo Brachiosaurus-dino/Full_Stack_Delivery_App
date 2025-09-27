@@ -1,6 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import { connect_mongo_db } from './Config/mongo.js'
+
 dotenv.config()
 
 const app = express()
@@ -8,6 +9,8 @@ const app = express()
 const PORT=process.env.PORT
 
 app.use(express.json())
+
+
 
 await connect_mongo_db()
 
