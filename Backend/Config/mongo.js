@@ -8,7 +8,7 @@ dotenv.config()
 export const connect_mongo_db=async () => {
     try{
         await mongoose.connect(process.env.MONGO_DB)
-        console.log("Mongo_DB server connected")
+        console.log("Mongo_DB server connected from MONGO_DB file")
         
 
         
