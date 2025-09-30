@@ -8,12 +8,12 @@ const orderSchema = new mongoose.Schema({
     customerName: {
         type: String,
         required: true,
-        trime: true,
+        trim: true,
     },
     phoneNumber: {
         type: String,
         required: true,
-        trime: true
+        trim: true
     },
     item: [
         {
@@ -21,7 +21,7 @@ const orderSchema = new mongoose.Schema({
                 //Here ObjectId use to fetch the details of item you seelct 
                 typeof: mongoose.Schema.Types.ObjectId,
                 //Without ref you only get id with ref you gett details with .populate()
-                ref: 'Menu',
+                ref: "Menu",
                 required: true,
             },
             quantity: {
@@ -45,9 +45,10 @@ const orderSchema = new mongoose.Schema({
 },
     {
         timestamps: true
-    }
+    },
+    // { collection: 'comments' } I ahve to give this collection name
 )
 
 //Order is the sructure of table and 'Order' name of table 
 
-export const Order = mongoose.orderSchema('Order', orderSchema)
+export const Order = mongoose.model('Order', orderSchema)
