@@ -46,7 +46,7 @@ const orderSchema = new mongoose.Schema({
     {
         timestamps: true
     },
-    // { collection: 'comments' } I ahve to give this collection name
+    // { collection: 'comments' } I ahve to give this collection name THis "comments" is after the . example sample_flix.comments
 )
 
 //Order is the sructure of table and 'Order' name of table 
