@@ -9,17 +9,17 @@ const menuSchema = new mongoose.Schema(
         name: {
             type: String,
             required: true,
-            trime: true
+            trim: true
         },
         description: {
             type: String,
             required: true,
-            trime: true
+            trim: true
         },
         price: {
             type: Number,
             required: true,
-            trime: true,
+            trim: true,
             min: 0
         },
         category: {
@@ -45,7 +45,8 @@ const menuSchema = new mongoose.Schema(
 
 )
 
-//Menu is the sructure of table and 'Menu' name of table 
 
-export const Menu = mongoose.menuSchema('Menu', menuSchema)
+// Menu is the structure/blueprint, 'Menu' is the collection/table name
+
+export const Menu = mongoose.model('Menu', menuSchema);
 
