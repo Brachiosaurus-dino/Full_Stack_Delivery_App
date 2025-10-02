@@ -19,9 +19,9 @@ const orderSchema = new mongoose.Schema({
         {
             menuitem: {
                 //Here ObjectId use to fetch the details of item you seelct 
-                typeof: mongoose.Schema.Types.ObjectId,
+                type: mongoose.Schema.Types.ObjectId,
                 //Without ref you only get id with ref you gett details with .populate()
-                ref: "Menu",
+                ref: 'Menu',
                 required: true,
             },
             quantity: {
