@@ -1,8 +1,6 @@
 import express from 'express'
-import { getallItemsbyId } from './Controller/Menu_Controller.js'
-import { createnewItem } from './Controller/Menu_Controller.js'
-import { deleteItem } from './Controller/Menu_Controller.js'
-import { updateItem } from './Controller/Menu_Controller.js'
+
+import { deleteItem , updateItem  , getallItemsbyId  , createnewItem ,getItems  } from './Controller/Menu_Controller.js'
 import dotenv from 'dotenv'
 import { connect_mongo_db } from './Config/mongo.js'
 import { Connection } from './Config/mysql.js'
@@ -21,7 +19,10 @@ app.use(express.json())
 
 // Routes
 app.post("/menu", createnewItem);
-
+app.get("/menu",getItems)
+app.get("/menu/:id",getallItemsbyId)
+app.delete("/menu/:id",deleteItem)
+app.put("/menu/:id",updateItem)
 
 await connect_mongo_db();
 console.log('MONGO DATABASE CONNECTED FROM SERVER FILE.....');
