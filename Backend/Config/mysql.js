@@ -3,29 +3,29 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-export const Seq= new Sequelize(
+export const Seq = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
   process.env.DB_PASSWORD,
   {
-    host:process.env.DB_HOST,
-    dialect:"mysql",
-    logging:false
+    host: process.env.DB_HOST,
+    dialect: "mysql",
+    logging: false
   }
 
 );
 
- export const Connection = async () => {
-      try{
-        await Seq.authenticate()
-        const [rows] = await Seq.query('SELECT * FROM users;');
-        console.log(rows)
-        console.log("My SQL CONNECTION SUCCESSFUL FROM MYSQL FILE..........")
-      }
-      catch{
-        console.error("My SQL CONNECTION FAILED........")
-      }
- }
+export const Connection = async () => {
+  try {
+    await Seq.authenticate()
+    const [rows] = await Seq.query('SELECT * FROM users;');
+    console.log(rows)
+    console.log("My SQL CONNECTION SUCCESSFUL FROM MYSQL FILE..........")
+  }
+  catch {
+    console.error("My SQL CONNECTION FAILED........")
+  }
+}
 
 
 
