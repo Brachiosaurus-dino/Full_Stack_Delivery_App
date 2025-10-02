@@ -2,15 +2,7 @@
 
 import { Menu } from "../Models/Menu_Item_Model.js"
 
-export const getallItems = async (req,res) => { // This controller is working perfect ............... DONE 
-    try{
-        const products = await Menu.find()
-        res.status(200).json({success:true , data:products})
-    }
-    catch(error){
-        res.status(500).json({success:false,messsage:"Something Went Wrong"})
-    }
-}
+
 
 export const getallItemsbyId= async (req,res) => {      // This controller is working perfect ............... DONE 
     try{
@@ -81,3 +73,24 @@ export const deleteItem = async (req,res) => {      // This controller is workin
 // Working of save()
 
 // Document object → .save() → validate → convert to BSON → insert in MongoDB → return saved document
+
+
+
+
+
+
+
+
+
+
+
+
+// / export const getallItems = async (req,res) => { // This controller is working perfect ............... DONE 
+// //     try{
+// //         const products = await Menu.find()
+// //         res.status(200).json({success:true , data:products})
+// //     }
+// //     catch(error){
+// //         res.status(500).json({success:false,messsage:"Something Went Wrong"})
+// //     }
+// // }
