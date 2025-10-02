@@ -1,6 +1,6 @@
 // Controller (API) for Menu 
 
-import { Menu } from "../Models/Menu_Item_Model.js";
+import { Menu } from "../Models/Menu_Item_Model.js"
 
 export const getallItems = async (req,res) => {
     try{
@@ -26,16 +26,15 @@ export const getallItemsbyId= async (req,res) => {
     
 }
 
-export const createnewItem = async (req,res) => {
+export const createnewItem = async (req, res) => {  // This controller is working perfect ............... DONE 
     try {
-        const createProdcut = new Menu(req.body)
-        const saveProduct = createProdcut.save()
-        res.status(200).json({success:true,data:saveProduct})
+        const createProduct = new Menu(req.body);
+        const savedProduct = await createProduct.save();
+        res.status(200).json({ success: true, data: savedProduct });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
     }
-    catch(error){
-        res.status(500).json({success:true,messsage:"Something Went Wrong"})
-    }
-}
+};
 
 export const updateItem= async (req,res) => {
     try{

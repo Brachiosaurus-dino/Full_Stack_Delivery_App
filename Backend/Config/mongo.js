@@ -2,7 +2,7 @@
 // mongo.js
 
 import { Order } from '../Models/Order_Model.js'
-import { Menu } from '../Models/Menu_Item_Model'
+import { Menu } from '../Models/Menu_Item_Model.js'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
