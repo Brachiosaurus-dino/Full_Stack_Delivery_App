@@ -75,3 +75,9 @@ export const deleteItem = async (req,res) => {      // This controller is workin
         res.status(500).json({success:false , messsage:"Something Went Wrong"})
     }
 }
+
+
+
+// Working of save()
+
+// Document object → .save() → validate → convert to BSON → insert in MongoDB → return saved document
