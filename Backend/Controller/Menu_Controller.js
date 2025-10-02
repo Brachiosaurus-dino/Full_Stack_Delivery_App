@@ -2,7 +2,7 @@
 
 import { Menu } from "../Models/Menu_Item_Model.js"
 
-export const getallItems = async (req,res) => {
+export const getallItems = async (req,res) => { // This controller is working perfect ............... DONE 
     try{
         const products = await Menu.find()
         res.status(200).json({success:true , data:products})
@@ -12,7 +12,7 @@ export const getallItems = async (req,res) => {
     }
 }
 
-export const getallItemsbyId= async (req,res) => {
+export const getallItemsbyId= async (req,res) => {      // This controller is working perfect ............... DONE 
     try{
         const productbyId = await Menu.findById(req.params.id)
         if(!productbyId){
@@ -26,6 +26,19 @@ export const getallItemsbyId= async (req,res) => {
     
 }
 
+export const getItems = async(req,res) => {     // This controller is working perfect ............... DONE 
+    try{
+        const getProducts= await Menu.find()
+        if(!getProducts){
+            res.status(404).json({success:false , message:"Product not Found"})
+        }
+        res.status(200).json({success:true , data:getProducts})  
+    }
+    catch(error){
+        res.status(500).json({success:false , message:"Something Went Wrong"})
+    }
+}
+
 export const createnewItem = async (req, res) => {  // This controller is working perfect ............... DONE 
     try {
         const createProduct = new Menu(req.body);
@@ -36,9 +49,9 @@ export const createnewItem = async (req, res) => {  // This controller is workin
     }
 };
 
-export const updateItem= async (req,res) => {
+export const updateItem= async (req,res) => {       // This controller is working perfect ............... DONE 
     try{
-        const updateproducts = await Menu.findByIdAndUpdate(req,params.id , req.body , {new :true})
+        const updateproducts = await Menu.findByIdAndUpdate(req.params.id , req.body , {new :true})
         if(!updateproducts){
             res.status(404).json({success:false , messsage:"Product not Found"})
 
@@ -50,7 +63,7 @@ export const updateItem= async (req,res) => {
     }
 }
 
-export const deleteItem = async (req,res) => {
+export const deleteItem = async (req,res) => {      // This controller is working perfect ............... DONE 
     try{
         const deleteProduct = await Menu.findByIdAndDelete(req.params.id)
         if(!deleteProduct){

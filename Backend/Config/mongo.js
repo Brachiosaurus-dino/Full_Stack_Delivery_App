@@ -14,11 +14,11 @@ export const connect_mongo_db=async () => {
         console.log("Mongo_DB server connected from MONGO_DB file")
         // When i have the data i will run this file
 
-        // const orders=await Order.find().limit(8)  
-        // console.log('ALREADY PLACED ORDER',orders)
-
-        // const menu=await Menu.find().limit(8)  
-        // console.log('ALREADY PLACED ORDER',menu)
+        const orders=await Order.find().limit(8)  
+        console.log('ALREADY PLACED ORDER',orders)
+        const menu=await Menu.find().limit(8)  
+        
+        console.log('Menu Items',menu)
 
         
     }catch(error){
