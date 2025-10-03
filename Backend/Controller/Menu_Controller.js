@@ -1,10 +1,10 @@
-// Controller (API) for Menu 
+// --------------------------------------------------------------------Controller (API) for Menu -----------------------------------------------------------
 
 import { Menu } from "../Models/Menu_Item_Model.js"
 
+//--------------------------------------Show a single Item -----------------------------------------------------------------------
 
-
-export const getallItemsbyId = async (req, res) => {      // This controller is working perfect ............... DONE 
+export const getItemsbyId = async (req, res) => {      // This controller is working perfect ............... DONE 
     try {
         const productbyId = await Menu.findById(req.params.id)
         if (!productbyId) {
@@ -17,6 +17,8 @@ export const getallItemsbyId = async (req, res) => {      // This controller is 
     }
 
 }
+
+//--------------------------------------Show all Items-----------------------------------------------------------------------
 
 export const getItems = async (req, res) => {     // This controller is working perfect ............... DONE 
     try {
@@ -31,6 +33,10 @@ export const getItems = async (req, res) => {     // This controller is working 
     }
 }
 
+
+//--------------------------------------Cretae a new item in menu-----------------------------------------------------------------------
+
+
 export const createnewItem = async (req, res) => {  // This controller is working perfect ............... DONE 
     try {
         const createProduct = new Menu(req.body);
@@ -40,6 +46,9 @@ export const createnewItem = async (req, res) => {  // This controller is workin
         res.status(500).json({ success: false, message: error.message });
     }
 };
+
+//--------------------------------------Update Specific Item In Menu ----------------------------------------------------------------------- 
+
 
 export const updateItem = async (req, res) => {       // This controller is working perfect ............... DONE 
     try {
@@ -55,6 +64,8 @@ export const updateItem = async (req, res) => {       // This controller is work
     }
 }
 
+//--------------------------------------Delete Specific Item in Menu-----------------------------------------------------------------------
+
 export const deleteItem = async (req, res) => {      // This controller is working perfect ............... DONE 
     try {
         const deleteProduct = await Menu.findByIdAndDelete(req.params.id)
@@ -68,6 +79,14 @@ export const deleteItem = async (req, res) => {      // This controller is worki
     }
 }
 
+
+//  ON HOLD 
+
+// export const filter = async (req,res) => {
+//     try{
+//         const filterby = await Order.find({price :{$le :100}})
+//     }
+// }
 
 
 // Working of save()
