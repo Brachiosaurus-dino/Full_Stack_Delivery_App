@@ -1,9 +1,10 @@
 import express from 'express'
 
-import { deleteItem, updateItem, getallItemsbyId, createnewItem, getItems } from './Controller/Menu_Controller.js'
+import { deleteItem, updateItem, getItemsbyId , createnewItem, getItems } from './Controller/Menu_Controller.js'
 import dotenv from 'dotenv'
 import { connect_mongo_db } from './Config/mongo.js'
 import { Connection } from './Config/mysql.js'
+import { AddOrder, delete_Order, getorder, getorderbyID, updateorder } from './Controller/Order_controller.js'
 dotenv.config()
 
 const app = express()
@@ -17,16 +18,29 @@ app.use(express.json())
 //   next();
 // });
 
-// Routes
+// Routes For Menu
+
 app.post("/menu", createnewItem);
 
 app.get("/menu", getItems)
 
-app.get("/menu/:id", getallItemsbyId)
+app.get("/menu/:id", getItemsbyId)
 
 app.delete("/menu/:id", deleteItem)
 
 app.put("/menu/:id", updateItem)
+
+// Routes For Order
+
+app.post("/order",AddOrder)
+
+app.get("/order_get",getorder)
+
+app.get("/order/:id",getorderbyID)
+
+app.delete("/order/:id",delete_Order)
+
+app.put('/order/:id',updateorder)
 
 
 await connect_mongo_db();
