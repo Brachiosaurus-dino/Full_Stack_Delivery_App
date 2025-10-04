@@ -6,20 +6,26 @@ import { Order } from '../Models/Order_Model.js'
 
 //--------------------------------------Add Order-----------------------------------------------------------------------
 
-export const AddOrder = async (req, res) => {
+export const AddOrder = async (req, res ,next) => {
     try {
         const { customerName, phoneNumber, item, totalPrice , delivery_address } = req.body
         if(!customerName || !phoneNumber || !item || !delivery_address || !totalPrice ){
-            res.status(403).json({success:false , message:"Please Provide All Data"})
+            const error = new Error("Please Provide All Data")
+            error.status=400
+            //If I dont use return it runs the furthur code and give problem "Cannot set headers after they are sent"
+            return next(error)
         }
 
         const order_create = await Order.create({ customerName,phoneNumber, item, totalPrice, delivery_address })
         if (!order_create) {
-            res.status(404).json({ success: false, message: "Details are not completed" })
+
+            const error =new Error("Details are not completed")
+            error.status=500
+            return next(error)
         }
         res.status(200).json({ success: true, data: order_create })
     }
-    catch (error) {
+    catch (err) {
         res.status(500).json({ success: false, message: "Something Went Wrong" })
     }
 }
