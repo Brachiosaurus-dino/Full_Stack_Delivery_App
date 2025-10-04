@@ -5,6 +5,7 @@ import dotenv from 'dotenv'
 import { connect_mongo_db } from './Config/mongo.js'
 import { Connection } from './Config/mysql.js'
 import { AddOrder, delete_Order, getorder, getorderbyID, updateorder } from './Controller/Order_controller.js'
+import error_Handler from './Middelware/Error_Handler.js'
 dotenv.config()
 
 const app = express()
@@ -42,6 +43,7 @@ app.delete("/order/:id",delete_Order)
 
 app.put('/order/:id',updateorder)
 
+app.use(error_Handler)
 
 await connect_mongo_db();
 console.log('MONGO DATABASE CONNECTED FROM SERVER FILE.....');
