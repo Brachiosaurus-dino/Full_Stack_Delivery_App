@@ -4,7 +4,7 @@ import { Menu } from "../Models/Menu_Item_Model.js"
 
 //--------------------------------------Show a single Item -----------------------------------------------------------------------
 
-export const getItemsbyId = async (req, res) => {      // This controller is working perfect ............... DONE 
+export const getItembyId = async (req, res) => {      // This controller is working perfect ............... DONE 
     try {
         const productbyId = await Menu.findById(req.params.id)
         if (!productbyId) {
