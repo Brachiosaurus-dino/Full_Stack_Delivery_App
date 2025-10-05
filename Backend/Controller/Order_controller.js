@@ -26,7 +26,7 @@ export const AddOrder = async (req, res ,next) => {
         res.status(200).json({ success: true, data: order_create })
     }
     catch (err) {
-        res.status(500).json({ success: false, message: "Something Went Wrong" })
+        return next(err)
     }
 }
 

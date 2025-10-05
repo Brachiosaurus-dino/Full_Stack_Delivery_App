@@ -1,6 +1,6 @@
 // APi for validations
 
-const Validation_Of_Orders = async (req , res , next) => {
+export const Validation_Of_Orders = async (req , res , next) => {
     const {customerName , phoneNumber , item , totalPrice , delivery_address } = req.body
 
     if(!customerName || !phoneNumber || !item || !totalPrice || ! delivery_address ){
@@ -36,6 +36,10 @@ const Validation_Of_Orders = async (req , res , next) => {
         return(error)
     }
 
-    res.status(200).json({success:true , message:"Validation Successfully passed"})
+    console.log("Validation Passed Successfully....")
+    next()
 
 }
+
+
+// We Cannot send two response for one request

@@ -6,6 +6,7 @@ import { connect_mongo_db } from './Config/mongo.js'
 import { Connection } from './Config/mysql.js'
 import { AddOrder, delete_Order, getorder, getorderbyID, updateorder } from './Controller/Order_controller.js'
 import error_Handler from './Middelware/Error_Handler.js'
+import { Validation_Of_Orders } from './Middelware/Validate_Request.js'
 dotenv.config()
 
 const app = express()
@@ -33,7 +34,7 @@ app.put("/menu/:id", updateItem)
 
 // Routes For Order
 
-app.post("/order",AddOrder)
+app.post("/order",Validation_Of_Orders,AddOrder)
 
 app.get("/order_get",getorder)
 
