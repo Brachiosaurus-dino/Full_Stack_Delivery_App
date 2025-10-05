@@ -1,7 +1,9 @@
 import express from 'express'
 
-import { deleteItem, updateItem, getItemsbyId , createnewItem, getItems } from './Controller/Menu_Controller.js'
+// import { deleteItem, updateItem, getItembyId , createnewItem, getItems } from './Controller/Menu_Controller.js'
+import { menu_router } from './Routes/Menu_Routes.js'
 import dotenv from 'dotenv'
+import { order_routes } from './Routes/Order_Routes.js'
 import { connect_mongo_db } from './Config/mongo.js'
 import { Connection } from './Config/mysql.js'
 import { AddOrder, delete_Order, getorder, getorderbyID, updateorder } from './Controller/Order_controller.js'
@@ -15,34 +17,14 @@ const PORT = process.env.PORT
 
 app.use(express.json())
 
-// app.use((req, res, next) => {
-//   console.log(req.method, req.url, req.body);
-//   next();
-// });
 
 // Routes For Menu
 
-app.post("/menu", createnewItem);
-
-app.get("/menu", getItems)
-
-app.get("/menu/:id", getItemsbyId)
-
-app.delete("/menu/:id", deleteItem)
-
-app.put("/menu/:id", updateItem)
+app.use('/menu' , menu_router)
 
 // Routes For Order
 
-app.post("/order",Validation_Of_Orders,AddOrder)
-
-app.get("/order_get",getorder)
-
-app.get("/order/:id",getorderbyID)
-
-app.delete("/order/:id",delete_Order)
-
-app.put('/order/:id',updateorder)
+app.use('/order', order_routes)
 
 app.use(error_Handler)
 
