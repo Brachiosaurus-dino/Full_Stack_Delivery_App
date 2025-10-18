@@ -38,9 +38,10 @@ function Navbar() {
                             
                         </div>
                         <div>
-                                <div className="flex space-x-8">
+                                <div className="flex hidden md:flex space-x-8 space-x-8">
                                     <img className="h-6 w-6" src="../../public/favourite.png" alt="" srcset="" />
                                     <img className="h-6 w-6" src="../../public/shopping-cart.png" alt="" srcset="" />
+                                    <img className="h-6 w-6" src="../../public/person.png" alt="" srcset="" />
                                 </div>
                             </div>
 
@@ -56,10 +57,10 @@ function Navbar() {
                     </div>
 
 
-                    <div className={`md:hidden bg-white shadow-md flex flex-col px-4 py-2 space-y-2 transition-all duration-300 ${menuOpen ? "opacity-100 translate-y-2  py-2" : "opacity-0 -translate-y-4 py-0 pointer-events-none"} `}
+                    <div className={`md:hidden bg-white shadow-md flex flex-col px-4 py-2 space-y-2 transition-all duration-300 ${menuOpen ? "opacity-100 translate-y-5  py-5" : "opacity-0 -translate-y-4 py-0 pointer-events-none"} `}
 
                     >
-                        <div className="flex flex-col space-y-2 px-4 text-orange-500">
+                        <div className="flex flex-col space-y-4 px-4 text-orange-500">
                             {navLinks.map((link) => (
                                 <a
                                     key={link.name}
@@ -70,6 +71,13 @@ function Navbar() {
                                     {link.name}
                                 </a>
                             ))}
+                            <div>
+                                <div className="flex  mt-2 space-x-4">
+                                    <img className="h-6 w-6" src="../../public/favourite.png" alt="" srcset="" />
+                                    <img className="h-6 w-6" src="../../public/shopping-cart.png" alt="" srcset="" />
+                                    <img className="h-6 w-6" src="../../public/person.png" alt="" srcset="" />
+                                </div>
+                            </div>
                         </div>
                     </div>
 
