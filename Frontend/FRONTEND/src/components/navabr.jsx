@@ -1,56 +1,57 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
 
     const [menuOpen, setMenu] = useState(false)
 
     const navLinks = [
-        { name: 'Home', href: '#' },
-        { name: 'Services', href: '#' },
-        { name: 'About', href: '#' },
-        { name: 'Contact', href: '#' },
+        { name: 'Home', path: '/' },
+        { name: 'Services', path: '/sevices' },
+        { name: 'About', path: '/about' },
+        { name: 'Contact', path: '/contact' },
     ];
 
-    useEffect(()=>{
-        const handelScroll=setMenu(false)
-        window.addEventListener('scroll',handelScroll)
-        return () => window.removeEventListener('scroll' , handelScroll)
+    useEffect(() => {
+        const handelScroll = () => { setMenu(false) }
+        window.addEventListener('scroll', handelScroll)
+        return () => window.removeEventListener('scroll', handelScroll)
 
-    },[])
+    }, [])
 
     return (
         <>
 
-            <nav className="bg-white-500 shadow-md fixed w-full h-18">
+            <nav className="bg-white fixed top-0 left-0 shadow-md w-full z-50 h-18">
                 <div className="max-w-7xl mx-auto px-8 sm:px-6 lg-px:8">
                     <div className="flex justify-between h-16 items-center">
                         <div className="flex shrink-0 text-2xl font-bold text-value-600 text-orange-500"> QUICK BITES</div>
                         <div className="hidden md:flex space-x-8 text-align-center">
                             {navLinks.map((links) => (
-                                <a
+                                <Link
                                     key={links.name}
-                                    href={links.href}
-                                    className="text-gray-700 hover:text-orange-500 transition duration-300 font-medium"
+                                    to={links.path}
+                                    onClick={() => setMenu(false)}
+                                    className="text-black hover:text-orange-500 transition duration-300 font-medium"
                                 >
                                     {links.name}
-                                </a>
+                                </Link>
                             ))}
-                            
+
                         </div>
                         <div>
-                                <div className="flex hidden md:flex space-x-8 space-x-8">
-                                    <img className="h-6 w-6" src="../../public/favourite.png" alt="" srcset="" />
-                                    <img className="h-6 w-6" src="../../public/shopping-cart.png" alt="" srcset="" />
-                                    <img className="h-6 w-6" src="../../public/person.png" alt="" srcset="" />
-                                </div>
+                            <div className="hidden md:flex space-x-8">
+                                <img className="h-6 w-6" src="../../public/favourite.png" alt="" srcset="" />
+                                <img className="h-6 w-6" src="../../public/shopping-cart.png" alt="" srcset="" />
+                                <img className="h-6 w-6" src="../../public/person.png" alt="" srcset="" />
                             </div>
+                        </div>
 
 
                         <div className="md:hidden">
                             <button type="button"
                                 onClick={() => setMenu(!menuOpen)}
-                                className="focus:outline-none"
-                            >
+                                className="focus:outline-none">
                                 <img className="h-6 w-6" src="../../public/menu.png" alt="" srcset="" />
                             </button>
                         </div>
@@ -62,14 +63,15 @@ function Navbar() {
                     >
                         <div className="flex flex-col space-y-4 px-4 text-orange-500">
                             {navLinks.map((link) => (
-                                <a
+                                <Link
                                     key={link.name}
-                                    href={link.href}
-                                    className="text-black hover:text-orange-500 font-medium"
-                                    onClick={()=>setMenu(false)}
-                                >
+                                    to={link.path}
+                                    onClick={() => setMenu(false)}
+                                    className="text-black hover:text-orange-500 transition duration-300 font-medium">
+
                                     {link.name}
-                                </a>
+                                    
+                                </Link>
                             ))}
                             <div>
                                 <div className="flex  mt-2 space-x-4">
