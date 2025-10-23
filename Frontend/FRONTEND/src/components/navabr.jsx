@@ -4,12 +4,16 @@ import { Link } from "react-router-dom";
 function Navbar() {
 
     const [menuOpen, setMenu] = useState(false)
+    const [showNavbar , setShowNavbar] = useState(true)
+    const [lastScrollY, setlastScrollY] = useState(0)
 
     const navLinks = [
         { name: 'Home', path: '/' },
         { name: 'Services', path: '/sevices' },
         { name: 'About', path: '/about' },
         { name: 'Contact', path: '/contact' },
+        { name: 'Restaurent', path: '/restaurent' },
+        { name: 'Orders', path: '/orders' },
     ];
 
     useEffect(() => {
@@ -19,11 +23,30 @@ function Navbar() {
 
     }, [])
 
+    const controlNavbar = () => {
+        if (window.scrollY > lastScrollY ) {
+            setShowNavbar(false)
+        }
+        else {
+            setShowNavbar(true)
+        }
+        setlastScrollY(window.scrollY)
+    }
+
+    useEffect(()=>{
+        window.addEventListener('scroll',controlNavbar)
+        return ()=>{
+            window.removeEventListener('scroll',controlNavbar)
+        }
+    },[lastScrollY])
+
+
+
     return (
         <>
 
-            <nav className="bg-white fixed top-0 left-0 shadow-md w-full z-50 h-18">
-                <div className="max-w-7xl mx-auto px-8 sm:px-6 lg-px:8">
+            <nav className={`bg-white fixed top-0 left-0 shadow-md w-full z-50 h-18 transform transition duration-500 ${showNavbar ? "translate-y-0" : "-translate-y-full"} `}>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg-px:8">
                     <div className="flex justify-between h-16 items-center">
                         <div className="flex shrink-0 text-2xl font-bold text-value-600 text-orange-500"> QUICK BITES</div>
                         <div className="hidden md:flex space-x-8 text-align-center">
@@ -32,7 +55,7 @@ function Navbar() {
                                     key={links.name}
                                     to={links.path}
                                     onClick={() => setMenu(false)}
-                                    className="text-black hover:text-orange-500 transition duration-300 font-medium"
+                                    className="text-black text-sm hover:text-orange-500 transition duration-300 font-medium"
                                 >
                                     {links.name}
                                 </Link>
