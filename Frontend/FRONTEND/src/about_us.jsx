@@ -43,7 +43,7 @@ function About_Us() {
 
                 <div className="bg-gray-100 w-full h-full py-20">
                     <div className="container mx-auto px-4">
-                        <h1 className="text-center pb-15">Our Impact</h1>
+                        <h1 className="text-center pb-15 font-bold text-2xl">Our Impact</h1>
                         <div className="grid lg:grid-cols-4 grid-cols-1 gap-10 justify-items-center items-center">
                             <div className=" flex flex-col  max-w-[250px] justify-center rounded-xl items-center bg-white shadow-2xl w-full h-50">
                                 <img className="h-10 w-10" src="../public/icons8-account-male-96.png" alt="" />
@@ -71,7 +71,7 @@ function About_Us() {
 
                 <div className="w-full h-full py-20">
                     <div className="container mx-auto px-4">
-                        <h1 className="text-center pb-15">Meet Our Team</h1>
+                        <h1 className="text-center pb-15 font-bold text-2xl">Meet Our Team</h1>
                         <div className="grid lg:grid-cols-3 grid-cols-1 gap-10 justify-items-center items-center">
                             <div className=" flex flex-col  max-w-[250px] justify-center rounded-xl items-center bg-white shadow-2xl w-full h-50">
                                 <img className="h-10 w-10" src="../public/icons8-group-96.png" alt="" />

@@ -11,7 +11,7 @@ function Navbar() {
         { name: 'Home', path: '/' },
         { name: 'Services', path: '/sevices' },
         { name: 'About', path: '/about_us' },
-        { name: 'Contact', path: '/contact' },
+        { name: 'Contact', path: '/contact_us' },
         { name: 'Restaurent', path: '/restaurent' },
         { name: 'Orders', path: '/orders' },
     ];
