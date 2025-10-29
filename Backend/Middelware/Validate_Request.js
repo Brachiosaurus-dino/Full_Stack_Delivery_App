@@ -25,13 +25,13 @@ export const Validation_Of_Orders = async (req , res , next) => {
     }
     if(typeof totalPrice!=='number' && totalPrice < 0){
         const error = new Error("The Price Should be in number : ")
-        error.status(404)
+        error.status=404
         error.code="ORDER_VALIDATION_FAILED"
         return(error)
     }
     if(!/^[0-9]{10}$/.test(phoneNumber)){
         const error= new Error("The Phone number is not valid : ")
-        error.status(404)
+        error.status=404
         error.code="ORDER_VALIDATION_FAILED"
         return(error)
     }
