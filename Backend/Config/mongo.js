@@ -15,18 +15,18 @@ export const connect_mongo_db = async () => {
         console.log("Mongo_DB server connected from MONGO_DB file")
 
 
-        const restaurentSchema=new mongoose.Schema({},{strict:false})
-        const Restaurent=mongoose.model('restaurent',restaurentSchema)
+        const restaurentSchema = new mongoose.Schema({}, { strict: false })
+        const Restaurent = mongoose.model('restaurent', restaurentSchema)
 
 
-        const file=JSON.parse(fs.readFileSync('./mongo_data/food_delivery_30x30_loremflickr.json'))
+        const file = JSON.parse(fs.readFileSync('./mongo_data/food_delivery_30x30_loremflickr.json'))
 
         await Restaurent.insertMany(file)
         console.log("File imported Successfully.........")
         // When i have the data i will run this file
 
         const items = await Restaurent.find().limit(1)
-        console.dir(items,{depth:null , colors:true})
+        console.dir(items, { depth: null, colors: true })
         // const menu = await Menu.find().limit(8)
 
         // console.log('Menu Items', menu)
