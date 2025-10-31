@@ -2,7 +2,7 @@
 // mongo.js
 
 import { Order } from '../Models/Order_Model.js'
-import { Menu } from '../Models/Menu_Item_Model.js'
+import Restaurant from '../Models/Menu_Item_Model.js'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import fs from 'fs'
@@ -14,22 +14,22 @@ export const connect_mongo_db = async () => {
         await mongoose.connect(process.env.MONGO_DB)
         console.log("Mongo_DB server connected from MONGO_DB file")
 
+        // The Below code is used to import export data
 
-        const restaurentSchema = new mongoose.Schema({}, { strict: false })
-        const Restaurent = mongoose.model('restaurent', restaurentSchema)
+        // const restaurentSchema=new mongoose.Schema({},{strict:false})
+        // const Restaurent=mongoose.model('restaurent',restaurentSchema)
 
 
-        const file = JSON.parse(fs.readFileSync('./mongo_data/food_delivery_30x30_loremflickr.json'))
+        // const file=JSON.parse(fs.readFileSync('./mongo_data/food_delivery_30x30_loremflickr.json'))
 
-        await Restaurent.insertMany(file)
-        console.log("File imported Successfully.........")
+        // await Restaurent.insertMany(file)
+        // console.log("File imported Successfully.........")
         // When i have the data i will run this file
 
-        const items = await Restaurent.find().limit(1)
-        console.dir(items, { depth: null, colors: true })
-        // const menu = await Menu.find().limit(8)
-
-        // console.log('Menu Items', menu)
+        const items = await Order.find().limit(1)
+        console.dir(items,{depth:null , colors:true})
+        const menu = await Restaurant.find().limit(8)
+        console.dir(menu,{depth:null , colors:true})
 
 
     } catch (error) {

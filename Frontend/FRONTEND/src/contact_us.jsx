@@ -6,8 +6,10 @@ function Contact_Us() {
                 <div className="h-full w-full bg-gray-100 flex flex-col items-center py-40 ">
                     <div className="texr-center space-y-6 max-w-3xl ">
                         <p className="font-semibold text-3xl text-center">Contact Us</p>
-                        <p className="text-xs font-light text-center px-10 lg:px-0 ">We are on a mission bring delicious food  from your favourite local restaurent straight
-                            from local restaurent to your doorsteps faster and fresher then ever before
+                        <p className="text-xs font-light text-center px-10 lg:px-0 ">
+                            Have questions, feedback need any help?
+                            We're here to assiste you 24/7. Reach out to us
+                            through any of the channels below
                         </p>
                     </div>
                 </div>
