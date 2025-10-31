@@ -22,14 +22,14 @@ function Menu() {
 
     return (
         <>
-            <div>
+            <div className='bg-gray-100'> 
                 <div className='bg-gray-200 py-35'>
                     <p className=' text-center justify-center items-center font-bold text-3xl'>All Restaurants</p>
                     <p className='text-center justify-center items-center py-3'>Discover amazing food from local restaurant</p>
 
                 </div>
 
-                <div className="container lg:w-1/2 w-full mx-auto align-middle pb-20 pt-20">
+                <div className="container lg:w-1/2 w-full mx-auto align-middle pb-20 pt-20 ">
                     <div className="flex justify-between items-center pb-5 px-5 sm:px-0">
                         <h3 className="text-sm lg:text-2xl font-bold">Available Restaurents </h3>
                         <h3 className="lg:text-1xl text-sm  text-orange-500">View All</h3>
