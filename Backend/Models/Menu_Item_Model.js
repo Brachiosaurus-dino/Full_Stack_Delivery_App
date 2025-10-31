@@ -4,49 +4,69 @@
 
 import mongoose from "mongoose";
 
-const menuSchema = new mongoose.Schema(
-    {
-        name: {
-            type: String,
-            required: true,
-            trim: true
-        },
-        description: {
-            type: String,
-            required: true,
-            trim: true
-        },
-        price: {
-            type: Number,
-            required: true,
-            trim: true,
-            min: 0
-        },
-        category: {
-            type: String,
-            enum: ['starter', 'main', 'desert', 'drink'],
-            default: 'main',
-        },
-        available: {
-            type: Boolean,
-            default: true
-        },
-        ingredients: {
-            type: [String], //Store multiple onion , tomato , peas , cheese
-            default: [],
-        }
+const menuItemSchema = new mongoose.Schema({
+  item_id: {
+    type: Number,
+    required: true,
+    unique: true
+  },
+  name: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  price: {
+    type: Number,
+    required: true
+  },
+  description: {
+    type: String,
+    trim: true
+  },
+  veg: {
+    type: Boolean,
+    required: true
+  },
+  image_url: {
+    type: String,
+    trim: true
+  }
+});
 
+const restaurantSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  cuisine: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  rating: {
+    type: Number,
+    min: 0,
+    max: 5
+  },
+  delivery_time: {
+    type: String,
+    trim: true
+  },
+  address: {
+    type: String,
+    trim: true
+  },
+  image_url: {
+    type: String,
+    trim: true
+  },
+  menu: {
+    type: [menuItemSchema],
+    default: []
+  }
+}, { timestamps: true });
 
-    },
-    {
-        timestamps: true
-    }
+const Restaurant = mongoose.model("Restaurant", restaurantSchema);
 
-
-)
-
-
-// Menu is the structure/blueprint, 'Menu' is the collection/table name
-
-export const Menu = mongoose.model('Menu', menuSchema);
-
+export default Restaurant;
