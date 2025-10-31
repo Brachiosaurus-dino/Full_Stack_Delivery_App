@@ -9,7 +9,7 @@ function Navbar() {
 
     const navLinks = [
         { name: 'Home', path: '/' },
-        { name: 'Services', path: '/sevices' },
+        { name: 'Services', path: '/menu_items' },
         { name: 'About', path: '/about_us' },
         { name: 'Contact', path: '/contact_us' },
         { name: 'Restaurents', path: '/restaurents' },

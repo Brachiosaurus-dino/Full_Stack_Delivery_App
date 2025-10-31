@@ -1,28 +1,29 @@
 // --------------------------------------------------------------------Controller (API) for Menu -----------------------------------------------------------
-
-import { Menu } from "../Models/Menu_Item_Model.js"
+import Restaurant from "../Models/Menu_Item_Model.js"
 
 //--------------------------------------Show a single Item -----------------------------------------------------------------------
 
-export const getItembyId = async (req, res) => {      // This controller is working perfect ............... DONE 
+export const getItembyId = async (req, res) => {
     try {
-        const productbyId = await Menu.findById(req.params.id)
-        if (!productbyId) {
-            res.status(404).json({ success: false, messsage: "Product not Found" })
-        }
-        res.status(200).json({ success: true, data: productbyId })
-    }
-    catch (error) {
-        res.status(500).json({ success: false, messsage: "Something Went Wrong" })
-    }
+        const restaurant = await Restaurant.findById(req.params.id);
 
+        if (!restaurant) {
+            return res.status(404).json({ success: false, message: "Restaurant not found" });
+        }
+
+        // Return only the menu array
+        res.status(200).json({ success: true, data: restaurant.menu });
+    } catch (error) {
+        console.error("Error fetching restaurant:", error); // <--- log the real error
+        res.status(500).json({ success: false, message: "Something went wrong" });
+    }
 }
 
 //--------------------------------------Show all Items-----------------------------------------------------------------------
 
 export const getItems = async (req, res) => {     // This controller is working perfect ............... DONE 
     try {
-        const getProducts = await Menu.find()
+        const getProducts = await Restaurant.find()
         if (!getProducts) {
             res.status(404).json({ success: false, message: "Product not Found" })
         }
@@ -39,7 +40,7 @@ export const getItems = async (req, res) => {     // This controller is working 
 
 export const createnewItem = async (req, res) => {  // This controller is working perfect ............... DONE 
     try {
-        const createProduct = new Menu(req.body);
+        const createProduct = new Restaurant(req.body);
         const savedProduct = await createProduct.save();
         res.status(200).json({ success: true, data: savedProduct });
     } catch (error) {
@@ -52,7 +53,7 @@ export const createnewItem = async (req, res) => {  // This controller is workin
 
 export const updateItem = async (req, res) => {       // This controller is working perfect ............... DONE 
     try {
-        const updateproducts = await Menu.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        const updateproducts = await Restaurant.findByIdAndUpdate(req.params.id, req.body, { new: true })
         if (!updateproducts) {
             res.status(404).json({ success: false, messsage: "Product not Found" })
 
@@ -68,7 +69,7 @@ export const updateItem = async (req, res) => {       // This controller is work
 
 export const deleteItem = async (req, res) => {      // This controller is working perfect ............... DONE 
     try {
-        const deleteProduct = await Menu.findByIdAndDelete(req.params.id)
+        const deleteProduct = await Restaurant.findByIdAndDelete(req.params.id)
         if (!deleteProduct) {
             res.status(404).json({ success: false, messsage: "Product not Found" })
         }
