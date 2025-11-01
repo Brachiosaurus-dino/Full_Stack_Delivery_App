@@ -15,10 +15,7 @@ function Menu_Items() {
             .then((res) => {
                 console.log("All restaurants response:", res.data);
 
-                // Handle both possible shapes
-                const allRestaurants = Array.isArray(res.data)
-                    ? res.data
-                    : res.data.data; // if your API wraps it inside .data
+                const allRestaurants = Array.isArray(res.data) ? res.data : res.data.data; // if your API wraps it inside .data
 
                 if (Array.isArray(allRestaurants)) {
                     const found = allRestaurants.find(r => r._id === id);
@@ -46,24 +43,27 @@ function Menu_Items() {
     return (
         <>
             <div>
-
-                {resname && (
-                    <div className="h-full w-full bg-gray-100 flex flex-col items-center py-20">
-                        <div className="text-center space-y-4 max-w-3xl">
-                            <img
-                                src={resname.image_url}
-                                alt={resname.name}
-                                className="w-full h-64 object-cover rounded-lg shadow-md mb-4"
-                            />
-                            <p className="font-semibold text-3xl">{resname.name}</p>
-                            <p className="text-sm text-gray-600">{resname.address}</p>
-                            <p className="text-gray-500 text-sm">
-                                Cuisine: {resname.cuisine} | ⭐ {resname.rating} | ⏱️ {resname.delivery_time}
-                            </p>
+                <div className="py-18 px-6 bg-gray-200">
+                    {resname && (
+                        <div className="h-full w-full flex flex-col items-center py-20">
+                            <div className="text-center space-y-4 max-w-3xl">
+                                <img
+                                    src={resname.image_url}
+                                    alt={resname.name}
+                                    className="w-full h-64 object-cover rounded-lg shadow-md mb-4"
+                                />
+                                <p className="font-semibold text-3xl">{resname.name}</p>
+                                <p className="text-sm text-gray-600">{resname.address}</p>
+                                <p className="text-gray-500 text-sm">
+                                    Cuisine: {resname.cuisine} | ⭐ {resname.rating} | ⏱ {resname.delivery_time}
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                )}
+                    )}
+                </div>
 
+
+                <div className="text-center py-6 font-bold text-4xl">Our Menu</div>
                 <div className="flex flex-row flex-wrap lg:px-50  justify-center gap-6 py-10">
                     {items.map((item) => (
                         <div
