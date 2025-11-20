@@ -18,8 +18,12 @@ export const Seq = new Sequelize(
 export const Connection = async () => {
   try {
     await Seq.authenticate()
-    const [rows] = await Seq.query('SELECT * FROM users;');
+    const [rows] = await Seq.query('SELECT * FROM customers;');
+     const [prods] = await Seq.query('SELECT * FROM products;');
+     console.log('Customers')
     console.log(rows)
+    console.log('Products')
+    console.log(prods)
     console.log("My SQL CONNECTION SUCCESSFUL FROM MYSQL FILE..........")
   }
   catch {
