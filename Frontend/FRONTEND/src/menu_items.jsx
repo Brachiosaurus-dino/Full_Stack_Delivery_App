@@ -2,9 +2,11 @@ import axios from "axios"
 
 import { useState, useEffect } from "react"
 import { useParams } from "react-router"
+import { useOrder } from "./Context"
 
 
 function Menu_Items() {
+    const { addorder } = useOrder()
     const { id } = useParams()
     const [items, setItems] = useState([])
     const [resname, setName] = useState(null)
@@ -80,7 +82,14 @@ function Menu_Items() {
                                     <h2 className="text-xl font-semibold mb-1 text-center">{item.name}</h2>
                                     <p className="text-gray-500 text-sm mb-2 text-center">{item.description}</p>
                                     <p className="text-orange-600 font-bold text-lg text-center">${item.price}</p>
-                                    <button className="mt-4 w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 rounded-lg transition">
+                                    <button onClick={() => addorder({
+                                        id: item.item_id,       // your backend ID
+                                        name: item.name,
+                                        restaurant: resname.name,
+                                        price: Number(item.price), // ensure it's a number
+                                        image: item.image_url,
+                                        qty: 1
+                                    })} className="mt-4 w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 rounded-lg transition">
                                         Add to Cart
                                     </button>
                                 </div>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
 
     const [menuOpen, setMenu] = useState(false)
-    const [showNavbar , setShowNavbar] = useState(true)
+    const [showNavbar, setShowNavbar] = useState(true)
     const [lastScrollY, setlastScrollY] = useState(0)
 
     const navLinks = [
@@ -24,7 +24,7 @@ function Navbar() {
     }, [])
 
     const controlNavbar = () => {
-        if (window.scrollY > lastScrollY ) {
+        if (window.scrollY > lastScrollY) {
             setShowNavbar(false)
         }
         else {
@@ -33,12 +33,12 @@ function Navbar() {
         setlastScrollY(window.scrollY)
     }
 
-    useEffect(()=>{
-        window.addEventListener('scroll',controlNavbar)
-        return ()=>{
-            window.removeEventListener('scroll',controlNavbar)
+    useEffect(() => {
+        window.addEventListener('scroll', controlNavbar)
+        return () => {
+            window.removeEventListener('scroll', controlNavbar)
         }
-    },[lastScrollY])
+    }, [lastScrollY])
 
 
 
@@ -65,7 +65,7 @@ function Navbar() {
                         <div>
                             <div className="hidden md:flex space-x-8">
                                 <img className="h-6 w-6" src="../../public/favourite.png" alt="" srcset="" />
-                                <img className="h-6 w-6" src="../../public/shopping-cart.png" alt="" srcset="" />
+                                <Link to="/cart"><img className="h-6 w-6" src="/shopping-cart.png" alt="cart"/></Link>
                                 <img className="h-6 w-6" src="../../public/person.png" alt="" srcset="" />
                             </div>
                         </div>
@@ -93,7 +93,7 @@ function Navbar() {
                                     className="text-black hover:text-orange-500 transition duration-300 font-medium">
 
                                     {link.name}
-                                    
+
                                 </Link>
                             ))}
                             <div>

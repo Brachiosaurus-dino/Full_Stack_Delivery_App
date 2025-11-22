@@ -6,6 +6,7 @@ import Menu_Items from "./menu_items";
 import Contact_Us from "./contact_us";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Menu from "./menu";
+import CartPage from "./order";
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
         <Route path='/contact_us' element={<Contact_Us />} />
         <Route path='/restaurents' element={<Menu />} />
         <Route path="/restaurents/:id" element={<Menu_Items />} />
+        <Route path="/cart" element={<CartPage/>}/>
       </Routes>
       
       <Footer />
