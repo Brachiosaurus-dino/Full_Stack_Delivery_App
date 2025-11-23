@@ -1,11 +1,18 @@
 import React from "react";
 import { useOrder } from "./Context";
+import { useNavigate } from "react-router";
 
 function CartPage() {
     const { cart, updateQty, removeFromCart } = useOrder();
 
+    const navigate = useNavigate()
+
+    const handelchange= () =>{
+        navigate('/checkout')
+    }
+
     return (
-        <div className="min-h-screen bg-gray-50 text-gray-800">
+        <div className="min-h-screen bg-gray-50 py-20 text-gray-800">
             <div className="max-w-7xl mx-auto py-10 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
 
                 <div className="lg:col-span-2 space-y-6">
@@ -103,7 +110,7 @@ function CartPage() {
                         </span>
                     </div>
 
-                    <button className="bg-orange-500 w-full py-2 rounded text-white mt-4">
+                    <button onClick={handelchange} className="bg-orange-500 w-full py-2 rounded text-white mt-4">
                         Proceed to Checkout
                     </button>
                 </div>
