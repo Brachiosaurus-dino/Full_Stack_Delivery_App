@@ -6,13 +6,15 @@ import cors from 'cors'
 import { connect_mongo_db } from './Config/mongo.js'
 import { Connection } from './Config/mysql.js'
 import error_Handler from './Middelware/Error_Handler.js'
+import Stripe from 'stripe'
 
 dotenv.config()
 const app = express()
 app.use(cors())
 const PORT = process.env.PORT || 5900
 app.use(express.json())
-
+// new keyword is used so that everytime it creates new stripe  
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
 
 
@@ -22,6 +24,32 @@ app.get('/message', (req, res) => {
 })
 app.get("/", (req, res) => {
     res.send("<h1> HELLO THE SERVER IS RUNNING.....</h1>")
+})
+
+
+
+app.post('/payement gateway', async (req, res) => {
+    try {
+        const session = stripe.checkout.sessions.create({
+            payment_method_types: ['card', 'paypal'],
+            mode: 'payment',
+            line_items: req.body.items.map(items => ({
+                price_data: {
+                    currency: "usd",
+                    product_data: { name: items.name },
+                    unit_amount: items.price * 100,
+                },
+                quantity: items.quantity,
+            })),
+            success_url: "http://localhost:5173/success",
+            cancel_url: "http://localhost:5173/cancel",
+        })
+        res.json({ url: session.url })
+
+    }
+    catch (error) {
+        res.status(500).json({ error: "Something went wrong while payement" })
+    }
 })
 
 

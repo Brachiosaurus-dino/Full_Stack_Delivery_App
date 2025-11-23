@@ -24,6 +24,23 @@ export default function Checkout() {
         alert("Order placed!");
     };
 
+
+    const handlePayment = async () =>{
+        const res = await fetch('http://localhost:5900/create-checkout-session',{
+            method:"POST",
+            headers:{"Content-Type": "application/json" },
+            body : JSON.stringify({
+                items:cart.map(items=>({
+                    name:items.name,
+                    price: items.price,
+                    quantity: items.quantity
+                }))
+            })
+        })
+        const data = await res.json();
+        window.location.href = data.url;
+    }
+
     return (
         <div className="min-h-screen bg-gray-100 py-20">
             <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
@@ -115,6 +132,7 @@ export default function Checkout() {
                         />
 
                         <button
+                            onClick={handlePayment}
                             type="submit"
                             className="w-full bg-green-600 text-white py-2 rounded"
                         >
