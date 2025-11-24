@@ -66,7 +66,7 @@ function Navbar() {
                             <div className="hidden md:flex space-x-8">
                                 <img className="h-6 w-6" src="../../public/favourite.png" alt="" srcset="" />
                                 <Link to="/cart"><img className="h-6 w-6" src="/shopping-cart.png" alt="cart"/></Link>
-                                <img className="h-6 w-6" src="../../public/person.png" alt="" srcset="" />
+                                <Link to="/changes"><img className="h-6 w-6" src="../../public/person.png" alt="" srcset="" /></Link>
                             </div>
                         </div>
 
@@ -99,8 +99,8 @@ function Navbar() {
                             <div>
                                 <div className="flex  mt-2 space-x-4">
                                     <img className="h-6 w-6" src="../../public/favourite.png" alt="" srcset="" />
-                                    <img className="h-6 w-6" src="../../public/shopping-cart.png" alt="" srcset="" />
-                                    <img className="h-6 w-6" src="../../public/person.png" alt="" srcset="" />
+                                    <Link to="/cart"><img className="h-6 w-6" src="/shopping-cart.png" alt="cart"/></Link>
+                                    <Link to="/changes"><img className="h-6 w-6" src="../../public/person.png" alt="" srcset="" /></Link>
                                 </div>
                             </div>
                         </div>

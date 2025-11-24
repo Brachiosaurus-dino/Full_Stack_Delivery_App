@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Menu from "./menu";
 import CartPage from "./order";
 import Checkout from "./components/place_order";
+import U_and_D from "./update_deleet_1";
 function App() {
   return (
     <>
@@ -21,6 +22,7 @@ function App() {
         <Route path="/restaurents/:id" element={<Menu_Items />} />
         <Route path="/cart" element={<CartPage/>}/>
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/changes" element={<U_and_D/>}/>
       </Routes>
       
       <Footer />
