@@ -28,29 +28,40 @@ app.get("/", (req, res) => {
 
 
 
-app.post('/payement gateway', async (req, res) => {
+app.post('/create-checkout-session', async (req, res) => {
     try {
-        const session = stripe.checkout.sessions.create({
-            payment_method_types: ['card', 'paypal'],
-            mode: 'payment',
-            line_items: req.body.items.map(items => ({
-                price_data: {
-                    currency: "usd",
-                    product_data: { name: items.name },
-                    unit_amount: items.price * 100,
-                },
-                quantity: items.quantity,
-            })),
-            success_url: "http://localhost:5173/success",
-            cancel_url: "http://localhost:5173/cancel",
-        })
-        res.json({ url: session.url })
+        const {total} = req.body;
+        console.log("Total recieevd items ", total);
 
+        if (!total || total <= 0) {
+            return res.status(400).json({ error: "Invalid total amount" });
+        }
+
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types: ['card' ],
+            mode: 'payment',
+            line_items:[
+                {
+                    price_data:{
+                        currency:'usd',
+                        product_data:{name:"Total of Food"},
+                        unit_amount:Math.round(total*100),
+                    },
+                    quantity:1
+                }
+            ],
+            success_url: 'http://localhost:5173/success',
+            cancel_url: 'http://localhost:5173/cancel',
+        }); // <-- only one closing parenthesis
+
+        console.log("Stripe session created:", session.url);
+        res.json({ url: session.url });
+
+    } catch (error) {
+        console.error("Stripe full error object:", error);
+        res.status(500).json({ error: error.message });
     }
-    catch (error) {
-        res.status(500).json({ error: "Something went wrong while payement" })
-    }
-})
+});
 
 
 

@@ -5,19 +5,27 @@ const Ordercart = createContext()
 
 export function Orderdetails({ children }) {
 
-    const [cart, setCart] = useState(()=>{
+    const [cart, setCart] = useState(() => {
         const saved = localStorage.getItem('cart-items');
         return saved ? JSON.parse(saved) : []
     })
 
-    useEffect(()=>{
-        localStorage.setItem('cart-items',JSON.stringify(cart))
-    },[cart])
+    useEffect(() => {
+        localStorage.setItem('cart-items', JSON.stringify(cart))
+    }, [cart])
 
     const addorder = (item) => {
-        //Here we create a new array add all ..previous ittems and add new at the end the prev at first is the old array 
-        setCart((prev) => [...prev, item])
-
+        setCart((prev) => {
+            const index = prev.findIndex(i => i.id === item.id);
+            if (index !== -1) {
+                // Item already in cart, increment quantity
+                const updatedCart = [...prev];
+                updatedCart[index].quantity += 1;
+                return updatedCart;
+            } else {
+                return [...prev, { ...item, quantity: 1 }];
+            }
+        });
     };
     const removeFromCart = (id) => {
         setCart((prev) => prev.filter((c) => c.id !== id));
@@ -33,7 +41,7 @@ export function Orderdetails({ children }) {
     };
 
     return (
-        <Ordercart.Provider value={{ cart, addorder , removeFromCart , updateQty }}>
+        <Ordercart.Provider value={{ cart, addorder, removeFromCart, updateQty }}>
             {children}
         </Ordercart.Provider>
     )

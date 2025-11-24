@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useOrder } from "../Context";
+import QRCode from "qrcode";
+
 
 export default function Checkout() {
     const { cart } = useOrder();
@@ -8,6 +10,8 @@ export default function Checkout() {
     const delivery = 2.99;
     const tax = 4.32;
     const total = subtotal + delivery + tax;
+
+    const [qrCode, setQrCode] = useState(null);
 
     const [form, setForm] = useState({
         name: "",
@@ -19,27 +23,48 @@ export default function Checkout() {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        alert("Order placed!");
-    };
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     alert("Order placed!");
+    // };
 
 
-    const handlePayment = async () =>{
-        const res = await fetch('http://localhost:5900/create-checkout-session',{
-            method:"POST",
-            headers:{"Content-Type": "application/json" },
-            body : JSON.stringify({
-                items:cart.map(items=>({
-                    name:items.name,
-                    price: items.price,
-                    quantity: items.quantity
-                }))
-            })
+    const handleCard = async () => {
+        const res = await fetch('http://localhost:4500/create-checkout-session', {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ total }),
         })
+        // HEre we are getting a aurl from the server 
         const data = await res.json();
-        window.location.href = data.url;
+        // here we open the url on sam etab and if usess _blank we opn the url on new tab
+        window.open(data.url, "_self");
     }
+
+
+    const handleQrcode = async (e) => {
+        e.preventDefault();
+
+        try {
+            const res = await fetch("http://localhost:4500/create-checkout-session", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ total }),
+            });
+
+            const data = await res.json();
+
+            if (data) {
+                // generate QR code for Stripe session URL
+                const qr = await QRCode.toDataURL(data.url);
+                setQrCode(qr); // set QR code image
+            } else {
+                console.error("No URL returned from Stripe:", data);
+            }
+        } catch (err) {
+            console.error("Payment failed:", err);
+        }
+    };
 
     return (
         <div className="min-h-screen bg-gray-100 py-20">
@@ -99,45 +124,34 @@ export default function Checkout() {
                 <div className="bg-white p-6 rounded-xl shadow">
                     <h2 className="text-xl font-semibold mb-4">Delivery Details</h2>
 
-                    <form onSubmit={handleSubmit} className="space-y-4">
+                    <form className="space-y-4">
 
-                        <input
-                            type="text"
-                            name="name"
-                            placeholder="Full Name"
-                            className="w-full border p-2 rounded"
-                            value={form.name}
-                            onChange={handleChange}
-                            required
-                        />
+                        <input type="text" name="name" placeholder="Full Name" className="w-full border p-2 rounded" value={form.name} onChange={handleChange} required />
 
-                        <input
-                            type="text"
-                            name="address"
-                            placeholder="Address"
-                            className="w-full border p-2 rounded"
-                            value={form.address}
-                            onChange={handleChange}
-                            required
-                        />
+                        <input type="text" name="address" placeholder="Address" className="w-full border p-2 rounded" value={form.address} onChange={handleChange} required />
 
-                        <input
-                            type="text"
-                            name="phone"
-                            placeholder="Phone"
-                            className="w-full border p-2 rounded"
-                            value={form.phone}
-                            onChange={handleChange}
-                            required
-                        />
+                        <input type="text" name="phone" placeholder="Phone" className="w-full border p-2 rounded" value={form.phone} onChange={handleChange} required />
 
-                        <button
-                            onClick={handlePayment}
-                            type="submit"
-                            className="w-full bg-green-600 text-white py-2 rounded"
-                        >
-                            Place Order
+                        <button onClick={handleCard} type="button" className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 hover:cursor-pointer">
+                            Pay with card
                         </button>
+
+                        <div className="bg-white p-6 rounded-xl shadow">
+                            <h2 className="text-xl font-semibold mb-4">Payment</h2>
+                            {!qrCode ? (
+                                <button onClick={handleQrcode} className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
+                                    Pay With scanner
+                                </button>
+                                )
+                                :
+                                (
+
+                                    <div className="text-center">
+                                        <p className="mb-4 font-semibold">Scan to pay:</p>
+                                        <img src={qrCode} alt="Scan to pay" className="mx-auto" />
+                                    </div>
+                                )}
+                        </div>
                     </form>
                 </div>
 
