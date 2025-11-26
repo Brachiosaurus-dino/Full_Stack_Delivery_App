@@ -3,6 +3,11 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
+
+//You wrote the instructions on how to connect to MySQL (address, username, password).
+
+//But it has not connected yet.
+//It just prepares the connection details.
 export const Seq = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
@@ -15,6 +20,8 @@ export const Seq = new Sequelize(
 
 );
 
+
+//This is here the databse is connectiing to mysql 
 export const Connection = async () => {
   try {
     await Seq.authenticate()

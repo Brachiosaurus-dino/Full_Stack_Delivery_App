@@ -61,7 +61,9 @@ function U_and_D() {
             name: item.name,
             address: item.address,
             delivery_time: item.delivery_time,
-            image_url: item.image_url
+            image_url: item.image_url,
+            cuisine:item.cuisine,
+            rating:item.rating
         });
 
         window.scrollTo({ top: 0, behavior: "smooth" }); // prevent jump
@@ -99,7 +101,7 @@ function U_and_D() {
                 {(create || editingId) && (
                     <div className="max-w-md mx-auto bg-white shadow-lg p-5 mt-5 rounded-lg">
 
-                        
+
                         <h3 className="text-xl font-bold mb-3">
                             {/* Here If we are editing it shoes Edit Restaurent other wise Create restaurent */}
                             {editingId ? "Edit Restaurant" : "Create Restaurant"}
@@ -109,6 +111,8 @@ function U_and_D() {
                         <input type="text" name="address" placeholder="Address" value={formData.address} onChange={handleChange} className="w-full border px-3 py-2 mb-3 rounded-lg" />
                         <input type="text" name="delivery_time" placeholder="Delivery Time" value={formData.delivery_time} onChange={handleChange} className="w-full border px-3 py-2 mb-3 rounded-lg" />
                         <input type="text" name="image_url" placeholder="Image URL" value={formData.image_url} onChange={handleChange} className="w-full border px-3 py-2 mb-3 rounded-lg" />
+                        <input type="text" name="cuisine" placeholder="Cuisine" value={formData.cuisine} onChange={handleChange} className="w-full border px-3 py-2 mb-3 rounded-lg" />
+                        <input type="text" name="rating" placeholder="Rating" value={formData.rating} onChange={handleChange} className="w-full border px-3 py-2 mb-3 rounded-lg" />
 
 
                         <button
@@ -130,7 +134,9 @@ function U_and_D() {
                                         name: "",
                                         address: "",
                                         delivery_time: "",
-                                        image_url: ""
+                                        image_url: "",
+                                        cuisine:"",
+                                        rating:""
                                     });
                                 }}
                             >

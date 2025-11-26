@@ -1,12 +1,13 @@
 import express from 'express'
 import { menu_router } from './Routes/Menu_Routes.js'
 import dotenv from 'dotenv'
-import { order_routes } from './Routes/Order_Routes.js'
+// import { order_routes } from './Routes/Order_Routes.js'
 import cors from 'cors'
 import { connect_mongo_db } from './Config/mongo.js'
 import { Connection } from './Config/mysql.js'
 import error_Handler from './Middelware/Error_Handler.js'
 import Stripe from 'stripe'
+// import { auth_router } from './Routes/auth_Routes.js'
 
 dotenv.config()
 const app = express()
@@ -15,7 +16,6 @@ const PORT = process.env.PORT || 5900
 app.use(express.json())
 // new keyword is used so that everytime it creates new stripe  
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
-
 
 
 app.get('/message', (req, res) => {
@@ -65,9 +65,10 @@ app.post('/create-checkout-session', async (req, res) => {
 
 
 
+// app.use('/auth', auth_router)
 
 app.use('/menu', menu_router)
-app.use('/order', order_routes)
+// app.use('/order', order_routes)
 app.use(error_Handler)
 
 
