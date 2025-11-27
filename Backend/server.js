@@ -9,11 +9,13 @@ import error_Handler from './Middelware/Error_Handler.js'
 import Stripe from 'stripe'
 import { auth_router } from './Routes/auth_Routes.js'
 
+
 dotenv.config()
 const app = express()
+app.use(express.json())
 app.use(cors())
 const PORT = process.env.PORT || 5900
-app.use(express.json())
+
 // new keyword is used so that everytime it creates new stripe  
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
@@ -65,10 +67,11 @@ app.post('/create-checkout-session', async (req, res) => {
 
 
 
-app.use('/auth', auth_router)
+// app.use('/auth', auth_router)
 
 app.use('/menu', menu_router)
 // app.use('/order', order_routes)
+app.use('/auth', auth_router)
 app.use(error_Handler)
 
 

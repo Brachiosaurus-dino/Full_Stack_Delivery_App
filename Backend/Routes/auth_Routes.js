@@ -1,7 +1,7 @@
 import express from 'express'
 import bycrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { User } from '../Models/User_Model'
+import { User } from '../Models/User_Model.js'
 import bcrypt from 'bcryptjs'
 import dotenv from "dotenv";
 
@@ -15,7 +15,7 @@ export const auth_router=express.Router()
 
 
 
-auth_router.post('/Register',async (req,res)=>{
+auth_router.post('/register',async (req,res)=>{
     const {name , email , password , role} =req.body
 
     try{
@@ -40,7 +40,7 @@ auth_router.post('/Register',async (req,res)=>{
 
 
 
-auth_router.post('/Login',async(res,req)=>{
+auth_router.post('/login',async(req,res)=>{
     const {email,password}=req.body
 
     try{

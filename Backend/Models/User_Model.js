@@ -1,6 +1,6 @@
 
 import { DataTypes } from "sequelize";
-import { Seq } from "../Config/mysql";
+import { Seq } from "../Config/mysql.js";
 
 export const User = Seq.define("user", {
     id: {
