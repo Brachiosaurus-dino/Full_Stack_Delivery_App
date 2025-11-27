@@ -98,3 +98,152 @@ SELECT * FROM products;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- DROP DATABASE IF EXISTS shop_dummy_db;
+-- CREATE DATABASE shop_dummy_db;
+-- USE shop_dummy_db;
+
+-- -- ==========================================================
+-- -- 2. CREATE TABLES
+-- -- ==========================================================
+
+-- -- CUSTOMERS TABLE
+-- CREATE TABLE customers (
+--     customer_id INT AUTO_INCREMENT PRIMARY KEY,
+--     full_name VARCHAR(100) NOT NULL,
+--     email VARCHAR(150) UNIQUE NOT NULL,
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- );
+
+-- -- PRODUCTS TABLE
+-- CREATE TABLE products (
+--     product_id INT AUTO_INCREMENT PRIMARY KEY,
+--     product_name VARCHAR(100) NOT NULL,
+--     price DECIMAL(10,2) NOT NULL,
+--     stock INT DEFAULT 10,
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- );
+
+-- -- ORDERS TABLE
+-- CREATE TABLE orders (
+--     order_id INT AUTO_INCREMENT PRIMARY KEY,
+--     customer_id INT NOT NULL,
+--     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     CONSTRAINT fk_customer
+--         FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+--         ON DELETE CASCADE
+-- );
+
+-- -- ORDER ITEMS TABLE (Order Details)
+-- CREATE TABLE order_items (
+--     item_id INT AUTO_INCREMENT PRIMARY KEY,
+--     order_id INT NOT NULL,
+--     product_id INT NOT NULL,
+--     quantity INT NOT NULL DEFAULT 1,
+--     
+--     CONSTRAINT fk_order
+--         FOREIGN KEY (order_id) REFERENCES orders(order_id)
+--         ON DELETE CASCADE,
+--         
+--     CONSTRAINT fk_product
+--         FOREIGN KEY (product_id) REFERENCES products(product_id)
+--         ON DELETE CASCADE
+-- );
+
+-- -- ==========================================================
+-- -- 3. INSERT SAMPLE DATA
+-- -- ==========================================================
+
+-- -- Customers
+-- INSERT INTO customers (full_name, email) VALUES
+-- ('Alice Brown', 'alice@example.com'),
+-- ('John Miller', 'john@example.com'),
+-- ('Karen Smith', 'karen@example.com'),
+-- ('mantiss Smith', 'mantiss@example.com');
+
+-- -- Products
+-- INSERT INTO products (product_name, price, stock) VALUES
+-- ('Laptop', 1200.00, 10),
+-- ('Mouse', 25.00, 100),
+-- ('Keyboard', 55.50, 50),
+-- ('Headphones', 89.99, 40);
+
+-- -- Orders
+-- INSERT INTO orders (customer_id) VALUES
+-- (1), -- Alice
+-- (1), -- Alice
+-- (2), -- John
+-- (3); -- Karen
+
+-- -- Order Items
+-- INSERT INTO order_items (order_id, product_id, quantity) VALUES
+-- (1, 1, 1), -- Alice buys 1 Laptop
+-- (1, 2, 2), -- Alice buys 2 Mice
+-- (2, 4, 1), -- Alice buys 1 Headphones
+-- (3, 3, 1), -- John buys 1 Keyboard
+-- (4, 2, 5); -- Karen buys 5 Mice
+
+-- -- ==========================================================
+-- -- 4. TEST QUERIES
+-- -- ==========================================================
+
+-- -- All customers
+-- SELECT * FROM customers;
+
+-- -- All products
+-- SELECT * FROM products;
+
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255) UNIQUE,
+    password VARCHAR(255),
+    role ENUM('admin','user') DEFAULT 'user'
+);
+
+
+
+
