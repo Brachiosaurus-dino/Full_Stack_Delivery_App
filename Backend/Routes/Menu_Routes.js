@@ -9,7 +9,7 @@ export const menu_router = express.Router()
 
 menu_router.post('/add_item/',verify_admin,Validate_Menu_Item,createnewItem)
 
-menu_router.get('/get_items/:id',getItembyId )
+menu_router.get('/get_items/:id',veryfy_user,getItembyId )
 
 menu_router.get('/get_items', getItems)
 

@@ -7,7 +7,7 @@ import { connect_mongo_db } from './Config/mongo.js'
 import { Connection } from './Config/mysql.js'
 import error_Handler from './Middelware/Error_Handler.js'
 import Stripe from 'stripe'
-// import { auth_router } from './Routes/auth_Routes.js'
+import { auth_router } from './Routes/auth_Routes.js'
 
 dotenv.config()
 const app = express()
@@ -65,7 +65,7 @@ app.post('/create-checkout-session', async (req, res) => {
 
 
 
-// app.use('/auth', auth_router)
+app.use('/auth', auth_router)
 
 app.use('/menu', menu_router)
 // app.use('/order', order_routes)
