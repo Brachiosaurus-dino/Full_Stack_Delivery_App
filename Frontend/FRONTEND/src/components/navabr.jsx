@@ -1,6 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+
+const logout = () => {
+    localStorage.removeItem("token"); // remove JWT
+    localStorage.removeItem("Token")
+    localStorage.removeItem("role")
+    localStorage.removeItem("name")
+    localStorage.removeItem("cart-items")
+    window.location.href = "/login";   // redirect to login page
+};
+
 function Navbar() {
 
     const [menuOpen, setMenu] = useState(false)
@@ -41,6 +51,9 @@ function Navbar() {
     }, [lastScrollY])
 
 
+    
+
+
 
     return (
         <>
@@ -67,6 +80,14 @@ function Navbar() {
                                 <img className="h-6 w-6" src="../../public/favourite.png" alt="" srcset="" />
                                 <Link to="/cart"><img className="h-6 w-6" src="/shopping-cart.png" alt="cart"/></Link>
                                 <Link to="/changes"><img className="h-6 w-6" src="../../public/person.png" alt="" srcset="" /></Link>
+                                <Link to="/manss"><img className="h-6 w-6" src="../../public/person.png" alt="" /></Link>
+                                {/* Logout Button */}
+                                <button
+                                    onClick={logout}
+                                    className="bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-3 rounded transition text-sm"
+                                >
+                                    Logout
+                                </button>
                             </div>
                         </div>
 

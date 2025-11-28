@@ -2,42 +2,45 @@
 import { DataTypes } from "sequelize";
 import { Seq } from "../Config/mysql.js";
 
-export const User = Seq.define("user", {
+export const User = Seq.define("users", {   
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
+
     name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false,
         set(value) {
-            this.setDataValue("name", value.trim())
+            this.setDataValue("name", value.trim());
         }
     },
+
     email: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(150),
         allowNull: false,
+        unique: true,
         set(value) {
-            this.setDataValue('email', value.trim())
+            this.setDataValue("email", value.trim());
         }
     },
+
     password: {
         type: DataTypes.STRING,
-        allowNull: false,
-
+        allowNull: false
     },
+
     role: {
-        type: DataTypes.ENUM('admin', 'user'),
-        defaultValue: 'user',
-        allowNull: "false"
-    },
-},
-    {
-        timestamps:false
-    })
-
-
+        type: DataTypes.ENUM("admin", "user"),
+        defaultValue: "user",
+        allowNull: false
+    }
+}, {
+    timestamps: true, 
+    createdAt: "created_at",
+    updatedAt: "updated_at"
+});
 
 // // User Model on Mysql
 

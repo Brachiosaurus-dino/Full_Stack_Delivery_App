@@ -63,19 +63,13 @@ function App() {
         <Route path="/restaurents/:id" element={<Menu_Items />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<Checkout />} />
-
-        {/* Auth Routes */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
-        {/* Admin-only Protected Route */}
-        <Route
-          path="/changes"
-          element={
-            <Protect_Routes adminOnly={true}>
-              <U_and_D />
-            </Protect_Routes>
-          }
+        <Route path="/changes" element={
+          <Protect_Routes adminOnly={true}>
+            <U_and_D />
+          </Protect_Routes>
+        }
         />
       </Routes>
 

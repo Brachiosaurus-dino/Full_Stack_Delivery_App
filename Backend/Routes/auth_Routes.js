@@ -13,8 +13,6 @@ export const auth_router=express.Router()
 
 
 
-
-
 auth_router.post('/register',async (req,res)=>{
     const {name , email , password , role} =req.body
 

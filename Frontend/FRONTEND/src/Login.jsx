@@ -12,20 +12,26 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await api.post("/auth/Login", { email, password });
+      const res = await api.post("/auth/login", { email, password });
+
+      console.log("LOGIN RESPONSE:", res);  // <-- ADD THIS HERE
 
       if (!res.success) {
         setError(res.message || "Login Failed");
         return;
       }
 
-      localStorage.setItem("Token", res.token);
+      // SAVE REAL VALUES RETURNED BY BACKEND
+      localStorage.setItem("token", res.token);
       localStorage.setItem("role", res.role);
       localStorage.setItem("name", res.name);
 
-      // Navigate based on role
-      if (res.role === "admin") navigate("/admin");
-      else navigate("/user");
+      // Redirect based on role
+      if (res.role === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/");
+      }
     } catch (err) {
       console.error(err);
       setError("Something went wrong. Please try again.");
@@ -39,9 +45,7 @@ function Login() {
           Login
         </h2>
 
-        {error && (
-          <p className="text-red-500 text-center mb-4">{error}</p>
-        )}
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
 
         <form onSubmit={handleLogin} className="space-y-5">
           <div>
@@ -50,8 +54,7 @@ function Login() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full px-4 py-2 border rounded-lg"
               required
             />
           </div>
@@ -62,15 +65,14 @@ function Login() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full px-4 py-2 border rounded-lg"
               required
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition duration-200"
+            className="w-full bg-purple-600 text-white py-2 rounded-lg"
           >
             Login
           </button>

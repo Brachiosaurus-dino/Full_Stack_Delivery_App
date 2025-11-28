@@ -15,12 +15,18 @@ export const api = {
     },
 
     getAuth: async (url) => {
-        // Here it takes token form localstorage
-        const token = localStorage.getItem("Token")
-        // Then taht token is send to the backend to get th dtaa form the route like the items
+        // Takes token fomr localstorege
+        const token = localStorage.getItem("token"); // lowercase 'token'
+        if (!token) throw new Error("No token found, user not logged in");
+        // Send them to backend to show thersultss
         const res = await fetch(api_url + url, {
-            headers: { Authorization: "Bearer " + token }
+            headers: {
+                "Authorization": "Bearer " + token,
+                "Content-Type": "application/json"
+            }
         });
-        return res.json
+        return res.json(); // must call the function
     }
 }
+
+
