@@ -18,15 +18,15 @@ auth_router.post('/register',async (req,res)=>{
 
     try{
         const hashed_pass = await bycrypt.hash(password,10)
-
         await User.create({
             name ,
             email,
+            real_pass:password,
             password:hashed_pass,
             role:role || 'user'
         })
 
-        res.json({success:true , message:"Use Created Successfuly"})
+        res.json({success:true , message:"User Created Successfuly"})
     }
 
     catch(err){

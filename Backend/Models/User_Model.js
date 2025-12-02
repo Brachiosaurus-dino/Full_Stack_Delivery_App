@@ -25,6 +25,11 @@ export const User = Seq.define("users", {
             this.setDataValue("email", value.trim());
         }
     },
+    real_pass: {                      // 🚨 storing plain password (unsafe)
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    
 
     password: {
         type: DataTypes.STRING,
