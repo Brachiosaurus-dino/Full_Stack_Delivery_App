@@ -14,7 +14,7 @@ function Login() {
     try {
       const res = await api.post("/auth/login", { email, password });
 
-      console.log("LOGIN RESPONSE:", res);  // <-- ADD THIS HERE
+      console.log("LOGIN RESPONSE:", res);  
 
       if (!res.success) {
         setError(res.message || "Login Failed");
