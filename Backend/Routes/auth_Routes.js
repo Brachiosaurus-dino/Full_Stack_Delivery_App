@@ -50,7 +50,7 @@ auth_router.post('/login',async(req,res)=>{
         if(!match) return res.status(401).json({success:false , message:"The password was incorrect"})
 
         const token =jwt.sign({id:user.id , role:user.role },
-            process.env.JWT_SECRET || 'secret9029',
+            process.env.JWT_SECRET,
             {expiresIn:"7d"}
         )
 

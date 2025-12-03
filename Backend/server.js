@@ -8,7 +8,12 @@ import { Connection } from './Config/mysql.js'
 import error_Handler from './Middelware/Error_Handler.js'
 import Stripe from 'stripe'
 import { auth_router } from './Routes/auth_Routes.js'
+import crypto from "crypto";  
 
+
+
+
+process.env.JWT_SECRET = crypto.randomBytes(32).toString("hex");
 
 dotenv.config()
 const app = express()
@@ -78,6 +83,7 @@ app.use(error_Handler)
 
 
 const startServer = async () => {
+
     await connect_mongo_db();
     console.log('MONGO DATABASE CONNECTED FROM SERVER FILE.....');
 
