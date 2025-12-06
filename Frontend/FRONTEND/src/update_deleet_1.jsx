@@ -26,7 +26,6 @@ function U_and_D() {
         }
     };
 
-    // ✅ FIXED handleChange
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -124,7 +123,6 @@ function U_and_D() {
                             {editingId ? "Update" : "Create"}
                         </button>
 
-                        {/* ✅ Cancel Edit Button */}
                         {editingId && (
                             <button
                                 className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg ml-3"

@@ -85,7 +85,7 @@ function CartPage() {
                             </span>
                         </div>
 
-                        <div className="flex justify-between">
+                        {/* <div className="flex justify-between">
                             <span>Delivery Fee</span>
                             <span>$2.99</span>
                         </div>
@@ -93,26 +93,30 @@ function CartPage() {
                         <div className="flex justify-between">
                             <span>Tax</span>
                             <span>$4.32</span>
-                        </div>
+                        </div> */}
                     </div>
 
                     <hr className="my-4" />
 
                     <div className="flex justify-between text-lg font-semibold">
                         <span>Total</span>
-                        <span>
+                        {/* <span>
                             $
                             {(
                                 cart.reduce((total, i) => total + i.price * i.qty, 0) +
                                 2.99 +
                                 4.32
                             ).toFixed(2)}
-                        </span>
+                        </span> */}
                     </div>
-
-                    <button onClick={handelchange} className="bg-orange-500 w-full py-2 rounded text-white mt-4">
+                {cart.length>0 && (
+                     <button
+                    
+                     onClick={handelchange} className="bg-orange-500 w-full py-2 rounded text-white mt-4 ">
                         Proceed to Checkout
                     </button>
+                )}
+                   
                 </div>
             </div>
         </div>

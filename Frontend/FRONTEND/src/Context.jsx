@@ -14,22 +14,35 @@ export function Orderdetails({ children }) {
         localStorage.setItem('cart-items', JSON.stringify(cart))
     }, [cart])
 
+    // Add items
     const addorder = (item) => {
-        setCart((prev) => {
-            const index = prev.findIndex(i => i.id === item.id);
-            if (index !== -1) {
-                // Item already in cart, increment quantity
-                const updatedCart = [...prev];
-                updatedCart[index].quantity += 1;
-                return updatedCart;
-            } else {
-                return [...prev, { ...item, quantity: 1 }];
+        setCart(prev => {
+            const existing = prev.find(i => i.id === item.id);
+
+
+            if (existing) {
+                return prev.map(i =>
+                    i.id === item.id
+                        ? { ...i, qty: i.qty + 1 }   
+                        : i
+                );
             }
+
+            // Item not in cart → add with qty = 1
+            return [...prev, { ...item, qty: 1 }];
         });
     };
+
+
+    // Remove Items
+
     const removeFromCart = (id) => {
         setCart((prev) => prev.filter((c) => c.id !== id));
     };
+
+
+    // Update Items
+
     const updateQty = (id, amount) => {
         setCart((prev) =>
             prev.map((c) =>
@@ -40,8 +53,15 @@ export function Orderdetails({ children }) {
         );
     };
 
+    // Delete cart after order
+
+    const clearCart = () => {
+        setCart([])
+        localStorage.removeItem('cart-items')
+    }
+
     return (
-        <Ordercart.Provider value={{ cart, addorder, removeFromCart, updateQty }}>
+        <Ordercart.Provider value={{ cart, addorder, removeFromCart, updateQty, clearCart }}>
             {children}
         </Ordercart.Provider>
     )
@@ -53,9 +73,28 @@ export function useOrder() {
 
 
 
-// //So Ordercart.Provider give access to data inside teh values only to children(menu , home , contact pages) 
+// // So Ordercart.Provider give access to data inside the values only to children(menu , home , contact pages) 
 
 // // .provvider give access to data to Ordercart then children get access to the functions or values
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

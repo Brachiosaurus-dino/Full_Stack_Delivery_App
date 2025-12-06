@@ -9,6 +9,7 @@ import error_Handler from './Middelware/Error_Handler.js'
 import Stripe from 'stripe'
 import { auth_router } from './Routes/auth_Routes.js'
 import crypto from "crypto";  
+import smsRoute from './Routes/Sms_Routes.js'
 
 
 
@@ -17,8 +18,13 @@ process.env.JWT_SECRET = crypto.randomBytes(32).toString("hex");
 
 dotenv.config()
 const app = express()
+app.use(cors({
+    origin: 'http://localhost:5173'
+}))
+
 app.use(express.json())
-app.use(cors())
+app.use('/api',smsRoute)
+
 const PORT = process.env.PORT || 5900
 
 // new keyword is used so that everytime it creates new stripe  
@@ -37,8 +43,8 @@ app.get("/", (req, res) => {
 
 app.post('/create-checkout-session', async (req, res) => {
     try {
-        const {total} = req.body;
-        console.log("Total recieevd items ", total);
+        const {total , cart} = req.body;
+        console.log("Total recieevd items ", total , cart);
 
         if (!total || total <= 0) {
             return res.status(400).json({ error: "Invalid total amount" });
@@ -57,7 +63,8 @@ app.post('/create-checkout-session', async (req, res) => {
                     quantity:1
                 }
             ],
-            success_url: 'http://localhost:5173/success',
+        success_url: `http://localhost:5173/success?user=${encodeURIComponent(total)}&food=${encodeURIComponent(JSON.stringify(cart))}`,
+
             cancel_url: 'http://localhost:5173/cancel',
         }); // <-- only one closing parenthesis
 

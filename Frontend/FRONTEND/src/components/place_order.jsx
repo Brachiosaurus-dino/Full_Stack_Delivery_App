@@ -33,9 +33,9 @@ export default function Checkout() {
         const res = await fetch('http://localhost:4500/create-checkout-session', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ total }),
+            body: JSON.stringify({ total ,cart }),
         })
-        // HEre we are getting a aurl from the server 
+        // HEre we are getting a url from the server 
         const data = await res.json();
         // here we open the url on sam etab and if usess _blank we opn the url on new tab
         window.open(data.url, "_self");
@@ -49,7 +49,7 @@ export default function Checkout() {
             const res = await fetch("http://localhost:4500/create-checkout-session", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ total }),
+                body: JSON.stringify({ total ,cart}),
             });
 
             const data = await res.json();
@@ -120,7 +120,7 @@ export default function Checkout() {
                     </div>
                 </div>
 
-                {/* RIGHT SIDE – FORM */}
+              
                 <div className="bg-white p-6 rounded-xl shadow">
                     <h2 className="text-xl font-semibold mb-4">Delivery Details</h2>
 

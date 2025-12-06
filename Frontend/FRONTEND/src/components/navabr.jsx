@@ -23,7 +23,7 @@ function Navbar() {
         { name: 'About', path: '/about_us' },
         { name: 'Contact', path: '/contact_us' },
         { name: 'Restaurents', path: '/restaurents' },
-        { name: 'Orders', path: '/orders' },
+        // { name: 'Orders', path: '/orders' }
     ];
 
     useEffect(() => {
@@ -51,7 +51,7 @@ function Navbar() {
     }, [lastScrollY])
 
 
-    
+
 
 
 
@@ -78,10 +78,8 @@ function Navbar() {
                         <div>
                             <div className="hidden md:flex space-x-8">
                                 <img className="h-6 w-6" src="../../public/favourite.png" alt="" srcset="" />
-                                <Link to="/cart"><img className="h-6 w-6" src="/shopping-cart.png" alt="cart"/></Link>
+                                <Link to="/cart"><img className="h-6 w-6" src="/shopping-cart.png" alt="cart" /></Link>
                                 <Link to="/changes"><img className="h-6 w-6" src="../../public/person.png" alt="" srcset="" /></Link>
-                                <Link to="/manss"><img className="h-6 w-6" src="../../public/person.png" alt="" /></Link>
-                                {/* Logout Button */}
                                 <button
                                     onClick={logout}
                                     className="bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-3 rounded transition text-sm"
@@ -120,8 +118,14 @@ function Navbar() {
                             <div>
                                 <div className="flex  mt-2 space-x-4">
                                     <img className="h-6 w-6" src="../../public/favourite.png" alt="" srcset="" />
-                                    <Link to="/cart"><img className="h-6 w-6" src="/shopping-cart.png" alt="cart"/></Link>
+                                    <Link to="/cart"><img className="h-6 w-6" src="/shopping-cart.png" alt="cart" /></Link>
                                     <Link to="/changes"><img className="h-6 w-6" src="../../public/person.png" alt="" srcset="" /></Link>
+                                    <button
+                                        onClick={logout}
+                                        className="bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-3 rounded transition text-sm"
+                                    >
+                                        Logout
+                                    </button>
                                 </div>
                             </div>
                         </div>

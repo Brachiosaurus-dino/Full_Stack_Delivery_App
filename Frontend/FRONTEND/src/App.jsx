@@ -48,6 +48,7 @@ import Login from "./Login.jsx";
 import Register from "./Register.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Protect_Routes from "./components/Protect_routes.jsx";
+import Success from "./success.jsx";
 
 function App() {
   return (
@@ -65,6 +66,7 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/success" element={<Success/>}/>
         <Route path="/changes" element={
           <Protect_Routes adminOnly={true}>
             <U_and_D />
