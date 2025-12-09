@@ -28,7 +28,7 @@ export default function Success() {
     const sendSMS = async () => {
 
         try {
-            await axios.post("http://localhost:4500/api/send/sms", {
+            await axios.post("http://localhost:4500/api/send-sms", {
                 total: user,
                 cart: foodList,
             });

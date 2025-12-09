@@ -10,6 +10,8 @@ import Stripe from 'stripe'
 import { auth_router } from './Routes/auth_Routes.js'
 import crypto from "crypto";  
 import smsRoute from './Routes/Sms_Routes.js'
+import path from "path";
+import { fileURLToPath } from "url";
 
 
 
@@ -19,11 +21,12 @@ process.env.JWT_SECRET = crypto.randomBytes(32).toString("hex");
 dotenv.config()
 const app = express()
 app.use(cors({
-    origin: 'http://localhost:5173'
+    origin: 'http://localhost:5173',
+    credentials: true
 }))
 
 app.use(express.json())
-app.use('/api',smsRoute)
+app.use('/api', smsRoute)
 
 const PORT = process.env.PORT || 5900
 
@@ -31,13 +34,13 @@ const PORT = process.env.PORT || 5900
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
 
-app.get('/message', (req, res) => {
-    console.log("The backend Connected to Frontend Successfully:")
-    res.json({ message: "The Backend is Connected to Frontend Successfully....." })
-})
-app.get("/", (req, res) => {
-    res.send("<h1> HELLO THE SERVER IS RUNNING.....</h1>")
-})
+// app.get('/message', (req, res) => {
+//     console.log("The backend Connected to Frontend Successfully:")
+//     res.json({ message: "The Backend is Connected to Frontend Successfully....." })
+// })
+// app.get("/", (req, res) => {
+//     res.send("<h1> HELLO THE SERVER IS RUNNING.....</h1>")
+// })
 
 
 
@@ -87,6 +90,17 @@ app.use('/auth', auth_router)
 app.use(error_Handler)
 
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const frontendPath = path.join(__dirname, "../Frontend/FRONTEND/dist");
+
+app.use(express.static(frontendPath));
+
+// Catch-all for frontend routes **except API routes**
+app.get(/^\/(?!api).*/, (req, res) => {
+  res.sendFile(path.join(frontendPath, "index.html"));
+});
 
 
 const startServer = async () => {

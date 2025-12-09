@@ -29,7 +29,7 @@ function About_Us() {
                                 </p>
                             </div>
                             <div className="text-center bg-orange-600 max-w-sm h-full px-5 py-5 rounded-2xl" >
-                                <img className="h-10 w-10 " src="../public/likeingss-removebg-preview.png" alt="" />
+                                <img className="h-10 w-10 " src="../likeingss-removebg-preview.png" alt="" />
                                 <h1 className="text-xl text-left text-white ">Our Mission</h1>
                                 <p className="text-white text-left  w-full text-xs">
                                     To make delicious, high-quality food accessible
@@ -46,22 +46,22 @@ function About_Us() {
                         <h1 className="text-center pb-15 font-bold text-2xl">Our Impact</h1>
                         <div className="grid lg:grid-cols-4 grid-cols-1 gap-10 justify-items-center items-center">
                             <div className=" flex flex-col  max-w-[250px] justify-center rounded-xl items-center bg-white shadow-2xl w-full h-50">
-                                <img className="h-10 w-10" src="../public/icons8-account-male-96.png" alt="" />
+                                <img className="h-10 w-10" src="../icons8-account-male-96.png" alt="" />
                                 <p className="text-orange-600">10,000+</p>
                                 <p className="text-xs">Happy Customers</p>
                             </div>
                             <div className=" flex flex-col  max-w-[250px] justify-center rounded-xl items-center bg-white shadow-2xl w-full h-50">
-                                <img className="h-10 w-10" src="../public/icons8-truck-96.png" alt="" />
+                                <img className="h-10 w-10" src="../icons8-truck-96.png" alt="" />
                                 <p className="text-orange-600">50,000+</p>
                                 <p className="text-xs">Deliveries Male</p>
                             </div>
                             <div className=" flex flex-col  max-w-[250px] justify-center rounded-xl items-center bg-white shadow-2xl w-full h-50"> 
-                                <img className="h-10 w-10" src="../public/icons8-time-96.png" alt="" />
+                                <img className="h-10 w-10" src="../icons8-time-96.png" alt="" />
                                 <p className="text-orange-600 ">25 min</p>
                                 <p className="text-xs">Avg Delivery Time</p>
                             </div>
                             <div className=" flex flex-col  max-w-[250px] justify-center rounded-xl items-center bg-white shadow-2xl w-full h-50">
-                                <img className="h-10 w-10 " src="../public/icons8-badge-96.png" alt="" />
+                                <img className="h-10 w-10 " src="../icons8-badge-96.png" alt="" />
                                 <p className="text-orange-500">500+</p>
                                 <p className="text-xs">Partner Restaurents</p>
                             </div>
@@ -74,19 +74,19 @@ function About_Us() {
                         <h1 className="text-center pb-15 font-bold text-2xl">Meet Our Team</h1>
                         <div className="grid lg:grid-cols-3 grid-cols-1 gap-10 justify-items-center items-center">
                             <div className=" flex flex-col  max-w-[250px] justify-center rounded-xl items-center bg-white shadow-2xl w-full h-50">
-                                <img className="h-10 w-10" src="../public/icons8-group-96.png" alt="" />
+                                <img className="h-10 w-10" src="../icons8-group-96.png" alt="" />
                                 <p className="text-orange-600">Sarah Johnsson</p>
                                 <p className="text-xs mt-1">CEO & Founder</p>
                                 <p className="text-xs text-center w-1/2 mt-1">Passionate about connecting people with great food</p>
                             </div>
                             <div className=" flex flex-col  max-w-[250px] justify-center rounded-xl items-center bg-white shadow-2xl w-full h-50">
-                                <img className="h-10 w-10" src="../public/icons8-group-96.png" alt="" />
+                                <img className="h-10 w-10" src="../icons8-group-96.png" alt="" />
                                 <p className="text-orange-600">Mike Chen</p>
                                 <p className="text-xs mt-1">Head Of Operations</p>
                                 <p className="text-xs text-center w-1/2 mt-1">Ensuring every delivery is fast and fresh</p>
                             </div>
                             <div className=" flex flex-col  max-w-[250px] justify-center rounded-xl items-center bg-white shadow-2xl w-full h-50"> 
-                                <img className="h-10 w-10" src="../public/icons8-group-96.png" alt="" />
+                                <img className="h-10 w-10" src="../icons8-group-96.png" alt="" />
                                 <p className="text-orange-600 ">Lisa Rodriguez</p>
                                 <p className="text-xs mt-1">Customer experience</p>
                                 <p className="text-xs mt-1 text-center w-1/2">Making sure every customer has and amzing experience</p>

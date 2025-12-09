@@ -4,42 +4,42 @@ function Home() {
 
         {
             id: 1,
-            src: "../public/anh-nguyen-kcA-c3f_3FE-unsplash.jpg",
+            src: "../anh-nguyen-kcA-c3f_3FE-unsplash.jpg",
             caption1: "Balla Vista",
             caption2: "Itallian Pizza Pasta",
             time: "25-30 mins"
         },
         {
             id: 2,
-            src: "../public/brooke-lark-oaz0raysASk-unsplash.jpg",
+            src: "../brooke-lark-oaz0raysASk-unsplash.jpg",
             caption1: "The Burger House",
             caption2: "American Burger Fast Food",
             time: "20-30 mins"
         },
         {
             id: 3,
-            src: "../public/dan-gold-4_jhDO54BYg-unsplash.jpg",
+            src: "../dan-gold-4_jhDO54BYg-unsplash.jpg",
             caption1: "Sakura Sushi",
             caption2: "Japanese Sushi",
             time: "30-40 mins"
         },
         {
             id: 4,
-            src: "../public/eaters-collective-12eHC6FxPyg-unsplash.jpg",
+            src: "../eaters-collective-12eHC6FxPyg-unsplash.jpg",
             caption1: "Green Garden",
             caption2: "Healthy Salads",
             time: "15-25 mins"
         },
         {
             id: 5,
-            src: "../public/lily-banse--YHSwy6uqvk-unsplash(1).jpg",
+            src: "../lily-banse--YHSwy6uqvk-unsplash(1).jpg",
             caption1: "Spice Route",
             caption2: "Indian Spicy Curry",
             time: "20-40 mins"
         },
         {
             id: 6,
-            src: "../public/thought-catalog-9aOswReDKPo-unsplash.jpg",
+            src: "../thought-catalog-9aOswReDKPo-unsplash.jpg",
             caption1: "Taco Festa",
             caption2: "Mexican Taco",
             time: "23-44 mins"
@@ -52,32 +52,32 @@ function Home() {
 
         {
             id: 1,
-            src: "../public/burger.png",
+            src: "../burger.png",
             caption: "Burgers"
         },
         {
             id: 2,
-            src: "../public/dietss.png",
+            src: "../dietss.png",
             caption: "Healthy"
         },
         {
             id: 3,
-            src: "../public/ice-cream.png",
+            src: "../ice-cream.png",
             caption: "Desert"
         },
         {
             id: 4,
-            src: "../public/pizza.png",
+            src: "../pizza.png",
             caption: "Pizza",
         },
         {
             id: 5,
-            src: "../public/coffee-cup.png",
+            src: "../coffee-cup.png",
             caption: "Coffee",
         },
         {
             id: 6,
-            src: "../public/sushi.png",
+            src: "../sushi.png",
             caption: "Sushi"
         },
     ]
@@ -86,7 +86,7 @@ function Home() {
         <>
             <div>
                 <div className="w-full h-[400px] md:h-[600px] relative overflow-x-hidden mt-16 ">
-                    <img className="h-full w-full object-cover" src="../public/dan-gold-4_jhDO54BYg-unsplash.jpg" alt="" srcset="" />
+                    <img className="h-full w-full object-cover" src="../dan-gold-4_jhDO54BYg-unsplash.jpg" alt="" srcset="" />
 
 
                     <div className="bg-orange-500 opacity-80 absolute inset-0 mix-blend-normal "></div>

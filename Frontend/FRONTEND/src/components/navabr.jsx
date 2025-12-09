@@ -77,9 +77,9 @@ function Navbar() {
                         </div>
                         <div>
                             <div className="hidden md:flex space-x-8">
-                                <img className="h-6 w-6" src="../../public/favourite.png" alt="" srcset="" />
+                                <img className="h-6 w-6" src="../../favourite.png" alt="" srcset="" />
                                 <Link to="/cart"><img className="h-6 w-6" src="/shopping-cart.png" alt="cart" /></Link>
-                                <Link to="/changes"><img className="h-6 w-6" src="../../public/person.png" alt="" srcset="" /></Link>
+                                <Link to="/changes"><img className="h-6 w-6" src="../../person.png" alt="" srcset="" /></Link>
                                 <button
                                     onClick={logout}
                                     className="bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-3 rounded transition text-sm"
@@ -94,7 +94,7 @@ function Navbar() {
                             <button type="button"
                                 onClick={() => setMenu(!menuOpen)}
                                 className="focus:outline-none">
-                                <img className="h-6 w-6" src="../../public/menu.png" alt="" srcset="" />
+                                <img className="h-6 w-6" src="../../menu.png" alt="" srcset="" />
                             </button>
                         </div>
                     </div>
@@ -117,9 +117,9 @@ function Navbar() {
                             ))}
                             <div>
                                 <div className="flex  mt-2 space-x-4">
-                                    <img className="h-6 w-6" src="../../public/favourite.png" alt="" srcset="" />
+                                    <img className="h-6 w-6" src="../../favourite.png" alt="" srcset="" />
                                     <Link to="/cart"><img className="h-6 w-6" src="/shopping-cart.png" alt="cart" /></Link>
-                                    <Link to="/changes"><img className="h-6 w-6" src="../../public/person.png" alt="" srcset="" /></Link>
+                                    <Link to="/changes"><img className="h-6 w-6" src="../../person.png" alt="" srcset="" /></Link>
                                     <button
                                         onClick={logout}
                                         className="bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-3 rounded transition text-sm"

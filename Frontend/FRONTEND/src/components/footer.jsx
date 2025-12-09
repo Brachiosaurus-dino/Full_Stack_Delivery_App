@@ -4,16 +4,15 @@ function Footer() {
     return (
         <footer className="bg-blue-950 text-white py-16">
             <div className="container mx-auto px-6 md:px-12 lg:w-3/4">
-                {/* Grid Section */}
+          
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-center lg:text-left">
-                    {/* About */}
+                  
                     <div className="space-y-2 text-left">
                         <h3 className="text-md font-ubuntu font-bold text-orange-500">QuickBite</h3>
                         <p className="mt-5 text-sm">Your favourite food delivery service , Fast ,Fresh and delicious meals deliverd right to your door steps</p>
 
                     </div>
 
-                    {/* Account */}
                     <div className="space-y-2 text-left">
                         <h3 className="text-md font-ubuntu font-bold mb-4">Quick links</h3>
                         <p className="text-xs">About Us</p>
@@ -22,7 +21,7 @@ function Footer() {
                         <p className="text-xs">Career</p>
                     </div>
 
-                    {/* Contact */}
+                 
                     <div className="space-y-2">
                         <h3 className="text-md font-ubuntu font-bold mb-4">Contact Us</h3>
 

@@ -32,7 +32,7 @@
 
 import jwt from "jsonwebtoken";
 
-export const veryfy_user = (req, res, next) => {
+export const verify_user = (req, res, next) => {
     try {
         const token = req.headers.authorization?.split(" ")[1];
 
@@ -52,7 +52,7 @@ export const veryfy_user = (req, res, next) => {
 
 
 export const verify_admin = (req, res, next) => {
-    veryfy_user(req, res, () => {
+    verify_user(req, res, () => {
         if (req.user.role !== "admin") {
             return res.status(403).json({ message: "Admin access only" });
         }
