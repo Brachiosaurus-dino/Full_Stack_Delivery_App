@@ -8,7 +8,7 @@ import { Connection } from './Config/mysql.js'
 import error_Handler from './Middelware/Error_Handler.js'
 import Stripe from 'stripe'
 import { auth_router } from './Routes/auth_Routes.js'
-import crypto from "crypto";  
+import crypto from "crypto";
 import smsRoute from './Routes/Sms_Routes.js'
 import path from "path";
 import { fileURLToPath } from "url";
@@ -44,31 +44,36 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
 
 
+
+
+
+
+
 app.post('/create-checkout-session', async (req, res) => {
     try {
-        const {total , cart} = req.body;
-        console.log("Total recieevd items ", total , cart);
+        const { total, cart } = req.body;
+        console.log("Total recieevd items ", total, cart);
 
         if (!total || total <= 0) {
             return res.status(400).json({ error: "Invalid total amount" });
         }
 
         const session = await stripe.checkout.sessions.create({
-            payment_method_types: ['card' ],
+            payment_method_types: ['card'],
             mode: 'payment',
-            line_items:[
+            line_items: [
                 {
-                    price_data:{
-                        currency:'usd',
-                        product_data:{name:"Total of Food"},
-                        unit_amount:Math.round(total*100),
+                    price_data: {
+                        currency: 'usd',
+                        product_data: { name: "Total of Food" },
+                        unit_amount: Math.round(total * 100),
                     },
-                    quantity:1
+                    quantity: 1
                 }
             ],
-        success_url: `http://localhost:5173/success?user=${encodeURIComponent(total)}&food=${encodeURIComponent(JSON.stringify(cart))}`,
+            success_url: `http://localhost:4500/success?user=${encodeURIComponent(total)}&food=${encodeURIComponent(JSON.stringify(cart))}`,
+            cancel_url: 'http://localhost:4500/cancel',
 
-            cancel_url: 'http://localhost:5173/cancel',
         }); // <-- only one closing parenthesis
 
         console.log("Stripe session created:", session.url);
@@ -89,6 +94,8 @@ app.use('/menu', menu_router)
 app.use('/auth', auth_router)
 app.use(error_Handler)
 
+app.get('/favicon.ico', (req, res) => res.status(204))
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -99,7 +106,7 @@ app.use(express.static(frontendPath));
 
 // Catch-all for frontend routes **except API routes**
 app.get(/^\/(?!api).*/, (req, res) => {
-  res.sendFile(path.join(frontendPath, "index.html"));
+    res.sendFile(path.join(frontendPath, "index.html"));
 });
 
 
