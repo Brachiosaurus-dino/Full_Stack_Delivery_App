@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useOrder } from "../Context.jsx";
 
 
 const logout = () => {
@@ -19,7 +20,7 @@ function Navbar() {
 
     const navLinks = [
         { name: 'Home', path: '/' },
-        { name: 'Services', path: '/menu_items' },
+        { name: 'Services', path: '/service' },
         { name: 'About', path: '/about_us' },
         { name: 'Contact', path: '/contact_us' },
         { name: 'Restaurents', path: '/restaurents' },
@@ -52,7 +53,7 @@ function Navbar() {
 
 
 
-
+    const { cartCount } = useOrder();
 
 
     return (
@@ -78,7 +79,18 @@ function Navbar() {
                         <div>
                             <div className="hidden md:flex space-x-8">
                                 <img className="h-6 w-6" src="../../favourite.png" alt="" srcset="" />
-                                <Link to="/cart"><img className="h-6 w-6" src="/shopping-cart.png" alt="cart" /></Link>
+                                <Link to="/cart"><div className="relative">
+                                    <img
+                                        src="../../shopping-cart.png"
+                                        alt="Cart"
+                                        className="w-8 h-8"
+                                    />
+                                    {cartCount > 0 && (
+                                        <span className="absolute -top-2 -right-2 bg-white text-orange-500 font-bold rounded-full w-5 h-5 flex items-center justify-center text-sm">
+                                            {cartCount}
+                                        </span>
+                                    )}
+                                </div></Link>
                                 <Link to="/changes"><img className="h-6 w-6" src="../../person.png" alt="" srcset="" /></Link>
                                 <button
                                     onClick={logout}
@@ -118,7 +130,18 @@ function Navbar() {
                             <div>
                                 <div className="flex  mt-2 space-x-4">
                                     <img className="h-6 w-6" src="../../favourite.png" alt="" srcset="" />
-                                    <Link to="/cart"><img className="h-6 w-6" src="/shopping-cart.png" alt="cart" /></Link>
+                                    <Link to="/cart"><div className="relative">
+                                        <img
+                                            src="../../shopping-cart.png"
+                                            alt="Cart"
+                                            className="w-8 h-8"
+                                        />
+                                        {cartCount > 0 && (
+                                            <span className="absolute -top-2 -right-2 bg-white text-orange-500 font-bold rounded-full w-5 h-5 flex items-center justify-center text-sm">
+                                                {cartCount}
+                                            </span>
+                                        )}
+                                    </div></Link>
                                     <Link to="/changes"><img className="h-6 w-6" src="../../person.png" alt="" srcset="" /></Link>
                                     <button
                                         onClick={logout}

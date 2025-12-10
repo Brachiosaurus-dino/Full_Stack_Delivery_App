@@ -60,8 +60,10 @@ export function Orderdetails({ children }) {
         localStorage.removeItem('cart-items')
     }
 
+      const cartCount = cart.reduce((total, item) => total + item.qty, 0);
+
     return (
-        <Ordercart.Provider value={{ cart, addorder, removeFromCart, updateQty, clearCart }}>
+        <Ordercart.Provider value={{ cart, addorder, removeFromCart, updateQty, clearCart ,cartCount }}>
             {children}
         </Ordercart.Provider>
     )
