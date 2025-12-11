@@ -83,7 +83,7 @@ function Navbar() {
                                     <img
                                         src="../../shopping-cart.png"
                                         alt="Cart"
-                                        className="w-8 h-8"
+                                        className="w-6 h-6"
                                     />
                                     {cartCount > 0 && (
                                         <span className="absolute -top-2 -right-2 bg-white text-orange-500 font-bold rounded-full w-5 h-5 flex items-center justify-center text-sm">
@@ -134,7 +134,7 @@ function Navbar() {
                                         <img
                                             src="../../shopping-cart.png"
                                             alt="Cart"
-                                            className="w-8 h-8"
+                                            className="w-6 h-6"
                                         />
                                         {cartCount > 0 && (
                                             <span className="absolute -top-2 -right-2 bg-white text-orange-500 font-bold rounded-full w-5 h-5 flex items-center justify-center text-sm">
