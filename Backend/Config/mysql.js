@@ -14,15 +14,18 @@ export const Seq = new Sequelize(
   process.env.DB_PASSWORD,
   {
     host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
     dialect: "mysql",
-    logging: false
+    logging: false,
   }
-
 );
 
 
 //This is here the databse is connectiing to mysql 
 export const Connection = async () => {
+
+  // Fix This issues
+
   try {
     await Seq.authenticate()
     const [rows] = await Seq.query('SELECT * FROM users;');
