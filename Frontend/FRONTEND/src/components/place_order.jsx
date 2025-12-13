@@ -30,7 +30,7 @@ export default function Checkout() {
 
 
     const handleCard = async () => {
-        const res = await fetch('http://localhost:4500/create-checkout-session', {
+        const res = await fetch('https://full-stack-delivery-app.onrender.com/create-checkout-session', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ total ,cart }),
