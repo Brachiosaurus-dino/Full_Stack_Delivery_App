@@ -12,7 +12,7 @@ function Menu() {
 
     useEffect(() => {
 
-        axios.get("https://full-stack-delivery-app.onrender.com/menu/get_items")
+        axios.get("http://localhost:4500/menu/get_items")
             .then((res) => {
                 console.log(res.data)
                 setAllitems(res.data.data)

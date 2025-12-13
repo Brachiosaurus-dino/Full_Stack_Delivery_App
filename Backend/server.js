@@ -22,12 +22,11 @@ dotenv.config()
 const app = express()
 app.use(cors({
     origin: ['http://localhost:5173',
-        'https://quick-bitessss.netlify.app'
     ],
     credentials: true
 }))
 
-app.options(/.*/, cors());
+// app.options(/.*/, cors());
 app.use(express.json())
 app.use('/api', smsRoute)
 
@@ -74,8 +73,8 @@ app.post('/create-checkout-session', async (req, res) => {
                     quantity: 1
                 }
             ],
-            success_url: `https://full-stack-delivery-app.onrender.com/success?user=${encodeURIComponent(total)}&food=${encodeURIComponent(JSON.stringify(cart))}`,
-            cancel_url: 'https://full-stack-delivery-app.onrender.com/cancel',
+            success_url: `http://localhost:5173/success?user=${encodeURIComponent(total)}&food=${encodeURIComponent(JSON.stringify(cart))}`,
+            cancel_url: 'http://localhost:5173/cancel',
 
         }); // <-- only one closing parenthesis
 
@@ -106,9 +105,9 @@ app.get('/favicon.ico', (req, res) => res.status(204))
 
 
 // Catch-all for frontend routes **except API routes**
-app.get(/^\/(?!api).*/, (req, res) => {
-  res.redirect('https://quick-bitessss.netlify.app');
-});
+// app.get(/^\/(?!api).*/, (req, res) => {
+//   res.redirect(' http://localhost:5173/');
+// });
 
 
 const startServer = async () => {

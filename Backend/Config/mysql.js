@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 import dotenv from 'dotenv'
-import fs from 'fs'; 
+// import fs from 'fs'; 
 
 dotenv.config()
 
@@ -18,13 +18,13 @@ export const Seq = new Sequelize(
     port: process.env.DB_PORT,
     dialect: "mysql",
     logging: false,
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: true,
-        ca: fs.readFileSync(process.env.CA_PATH), 
-      },
-    },
+    // dialectOptions: {
+    //   ssl: {
+    //     require: true,
+    //     rejectUnauthorized: true,
+    //     ca: fs.readFileSync(process.env.CA_PATH), 
+    //   },
+    // },
   }
 );
 

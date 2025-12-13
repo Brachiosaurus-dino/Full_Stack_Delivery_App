@@ -19,7 +19,7 @@ function U_and_D() {
 
     const fetchItems = async () => {
         try {
-            const resp = await axios.get("https://full-stack-delivery-app.onrender.com/menu/get_items");
+            const resp = await axios.get("http://localhost:4500/menu/get_items");
             setAllitems(resp.data.data);
         } catch (err) {
             console.log(err);
@@ -32,7 +32,7 @@ function U_and_D() {
 
     const handleCreate = async () => {
         try {
-            await axios.post("https://full-stack-delivery-app.onrender.commenu/add_item/", formData);
+            await axios.post("http://localhost:4500/add_item/", formData);
             fetchItems();
 
             // reset form
@@ -45,7 +45,7 @@ function U_and_D() {
 
     const handleUpdate = async (id) => {
         try {
-            await axios.put(`https://full-stack-delivery-app.onrender.com/menu/update_item/${id}`, formData);
+            await axios.put(`http://localhost:4500/menu/update_item/${id}`, formData);
             fetchItems();
             setEditingId(null);
         } catch (err) {
@@ -70,7 +70,7 @@ function U_and_D() {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`https://full-stack-delivery-app.onrender.com/menu/delete_item/${id}`);
+            await axios.delete(`http://localhost:4500/menu/delete_item/${id}`);
             setAllitems(allitems.filter((item) => item._id !== id));
         } catch (err) {
             console.log(err);

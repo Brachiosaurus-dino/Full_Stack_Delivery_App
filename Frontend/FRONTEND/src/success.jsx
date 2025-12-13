@@ -28,7 +28,7 @@ export default function Success() {
     const sendSMS = async () => {
 
         try {
-            const BACKEND_URL = 'https://full-stack-delivery-app.onrender.com'
+            const BACKEND_URL = 'http://localhost:4500'
             await axios.post(`${BACKEND_URL}/api/send-sms`, {
                 total: user,
                 cart: foodList,
@@ -52,7 +52,9 @@ export default function Success() {
         //     sendSMS();
         // }
         clearCart();
-        if (user && foodList.length > 0) sendSMS();
+        //Remove comments form the code to get message.............. 
+
+        // if (user && foodList.length > 0) sendSMS();
     }, []);
 
     return (

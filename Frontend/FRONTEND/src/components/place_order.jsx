@@ -30,10 +30,10 @@ export default function Checkout() {
 
 
     const handleCard = async () => {
-        const res = await fetch('https://full-stack-delivery-app.onrender.com/create-checkout-session', {
+        const res = await fetch('http://localhost:4500/create-checkout-session', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ total ,cart }),
+            body: JSON.stringify({ total, cart }),
         })
         // HEre we are getting a url from the server 
         const data = await res.json();
@@ -46,10 +46,10 @@ export default function Checkout() {
         e.preventDefault();
 
         try {
-            const res = await fetch("https://full-stack-delivery-app.onrender.com/create-checkout-session", {
+            const res = await fetch("http://localhost:4500/create-checkout-session", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ total ,cart}),
+                body: JSON.stringify({ total, cart }),
             });
 
             const data = await res.json();
@@ -120,7 +120,7 @@ export default function Checkout() {
                     </div>
                 </div>
 
-              
+
                 <div className="bg-white p-6 rounded-xl shadow">
                     <h2 className="text-xl font-semibold mb-4">Delivery Details</h2>
 
@@ -142,7 +142,7 @@ export default function Checkout() {
                                 <button onClick={handleQrcode} className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
                                     Pay With scanner
                                 </button>
-                                )
+                            )
                                 :
                                 (
 

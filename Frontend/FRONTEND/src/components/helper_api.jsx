@@ -1,5 +1,5 @@
 
-const api_url = 'https://full-stack-delivery-app.onrender.com'
+const api_url = 'http://localhost:4500'
 
 export const api = {
     // HEre it takes two things complete url and data you are sending to server
