@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import dotenv from 'dotenv'
+import fs from 'fs'; 
 
 dotenv.config()
 
@@ -17,6 +18,13 @@ export const Seq = new Sequelize(
     port: process.env.DB_PORT,
     dialect: "mysql",
     logging: false,
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: true,
+        ca: fs.readFileSync(process.env.CA_PATH), 
+      },
+    },
   }
 );
 
@@ -29,7 +37,7 @@ export const Connection = async () => {
   try {
     await Seq.authenticate()
     const [rows] = await Seq.query('SELECT * FROM users;');
-     console.log('users')
+    console.log('users')
     console.log(rows)
 
     console.log("My SQL CONNECTION SUCCESSFUL FROM MYSQL FILE..........")
