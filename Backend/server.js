@@ -74,8 +74,8 @@ app.post('/create-checkout-session', async (req, res) => {
                     quantity: 1
                 }
             ],
-            success_url: `https://quick-bitessss.netlify.app/success?user=${encodeURIComponent(total)}&food=${encodeURIComponent(JSON.stringify(cart))}`,
-            cancel_url: 'https://quick-bitessss.netlify.app/cancel',
+            success_url: `https://full-stack-delivery-app.onrender.com/success?user=${encodeURIComponent(total)}&food=${encodeURIComponent(JSON.stringify(cart))}`,
+            cancel_url: 'https://full-stack-delivery-app.onrender.com/cancel',
 
         }); // <-- only one closing parenthesis
 

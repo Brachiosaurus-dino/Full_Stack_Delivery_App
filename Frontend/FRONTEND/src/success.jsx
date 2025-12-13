@@ -28,9 +28,11 @@ export default function Success() {
     const sendSMS = async () => {
 
         try {
-            await axios.post("/api/send-sms", {
+            const BACKEND_URL = 'https://full-stack-delivery-app.onrender.com'
+            await axios.post(`${BACKEND_URL}/api/send-sms`, {
                 total: user,
                 cart: foodList,
+
             });
             console.log("SMS sent successfully!");
 
@@ -41,15 +43,16 @@ export default function Success() {
     }
 
     useEffect(() => {
+        // clearCart();
+
+        // let alreadySent = false;
+
+        // if (!alreadySent && user && foodList.length > 0) {
+        //     alreadySent = true;
+        //     sendSMS();
+        // }
         clearCart();
-
-        let alreadySent = false;
-
-        if (!alreadySent && user && foodList.length > 0) {
-            alreadySent = true;
-            sendSMS();
-        }
-
+        if (user && foodList.length > 0) sendSMS();
     }, []);
 
     return (
@@ -57,7 +60,7 @@ export default function Success() {
             <div className="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow">
 
                 <h1 className="text-3xl font-bold text-green-600 text-center mb-6">
-                     Order Successful!
+                    Order Successful!
                 </h1>
 
                 <p className="text-center text-xl font-semibold mb-8">
