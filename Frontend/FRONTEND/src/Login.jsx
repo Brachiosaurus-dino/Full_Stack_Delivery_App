@@ -14,7 +14,7 @@ function Login() {
     try {
       const res = await api.post("/auth/login", { email, password });
 
-      console.log("LOGIN RESPONSE:", res);  
+      console.log("LOGIN RESPONSE:", res);
 
       if (!res.success) {
         setError(res.message || "Login Failed");
@@ -28,6 +28,7 @@ function Login() {
 
       // Redirect based on role
       if (res.role === "admin") {
+        console.log("Navigating to admin page"); // should appear
         navigate("/admin");
       } else {
         navigate("/");
@@ -72,7 +73,7 @@ function Login() {
 
           <button
             type="submit"
-            className="w-full bg-purple-600 text-white py-2 rounded-lg"
+            className="w-full bg-purple-600 cursor-pointer text-white py-2 rounded-lg"
           >
             Login
           </button>

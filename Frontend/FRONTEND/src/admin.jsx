@@ -1,14 +1,11 @@
-export default function Admin() {
-    return (
-        <div>
-            <h1>Admin Dashboard</h1>
-            <p>Only admins can see this.</p>
-            <button onClick={() => { 
-                localStorage.clear(); 
-                window.location.href = "/login"; 
-            }}>
-                Logout
-            </button>
-        </div>
-    );
+ function AdminAccessPage() {
+
+  return (
+    <div className="mt-20" style={{ padding: "40px", textAlign: "center" }}>
+      <h1>Admin Dashboard</h1>
+      <p>You have access to <strong>add</strong> or <strong>edit</strong> the restaurants.</p>
+    </div>
+  );
 }
+
+export default AdminAccessPage

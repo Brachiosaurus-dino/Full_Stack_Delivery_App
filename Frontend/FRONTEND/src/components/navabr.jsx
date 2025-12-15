@@ -78,12 +78,12 @@ function Navbar() {
                         </div>
                         <div>
                             <div className="hidden md:flex space-x-8">
-                                <img className="h-6 w-6" src="../../favourite.png" alt="" srcset="" />
+                                <Link to='/changes'><img className="h-6 w-6 cursor-pointer" src="../../edit.png" alt="" srcset="" /></Link>
                                 <Link to="/cart"><div className="relative">
                                     <img
                                         src="../../shopping-cart.png"
                                         alt="Cart"
-                                        className="w-6 h-6"
+                                        className="w-6 h-6 cursor-pointer"
                                     />
                                     {cartCount > 0 && (
                                         <span className="absolute -top-2 -right-2 bg-white text-orange-500 font-bold rounded-full w-5 h-5 flex items-center justify-center text-sm">
@@ -91,13 +91,13 @@ function Navbar() {
                                         </span>
                                     )}
                                 </div></Link>
-                                <Link to="/changes"><img className="h-6 w-6" src="../../person.png" alt="" srcset="" /></Link>
-                                <button
-                                    onClick={logout}
+                                <Link to="/changes"><img className="h-6 w-6"  onClick={logout} src="../../person.png" alt="" srcset="" /></Link>
+                                {/* <button
+                                   
                                     className="bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-3 rounded transition text-sm"
                                 >
                                     Logout
-                                </button>
+                                </button> */}
                             </div>
                         </div>
 

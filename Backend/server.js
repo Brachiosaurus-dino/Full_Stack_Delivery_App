@@ -20,6 +20,7 @@ process.env.JWT_SECRET = crypto.randomBytes(32).toString("hex");
 
 dotenv.config()
 const app = express()
+app.use(express.urlencoded({ extended: true })); // ← REQUIRED
 app.use(cors({
     origin: ['http://localhost:5173',
         'https://quick-bitessss.netlify.app'

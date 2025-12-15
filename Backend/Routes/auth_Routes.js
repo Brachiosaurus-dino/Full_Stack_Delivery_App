@@ -36,6 +36,45 @@ auth_router.post('/register',async (req,res)=>{
 
 
 
+// auth_router.post('/register', async (req, res) => {
+//   try {
+//     // 1. Check if admin already exists
+//     const existingAdmin = await User.findOne({
+//       where: { email: 'admin3434@gmail.com' }
+//     });
+
+//     if (existingAdmin) {
+//       return res.status(409).json({
+//         success: false,
+//         message: 'Admin already exists',
+//       });
+//     }
+
+//     // 2. Create admin
+//     await User.create({
+//       name: 'ADMIN',
+//       email: 'admin3434@gmail.com',
+//       real_pass:'admin@1234',
+//       password: await bcrypt.hash('admin@1234', 10),
+//       role: 'admin',
+//     });
+
+//     console.log('Admin created successfully');
+
+//     res.status(201).json({
+//       success: true,
+//       message: 'Admin created successfully',
+//     });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({
+//       success: false,
+//       message: err.message,
+//     });
+//   }
+// });
+
+
 
 
 auth_router.post('/login',async(req,res)=>{
